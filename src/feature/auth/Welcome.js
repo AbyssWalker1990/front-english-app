@@ -12,7 +12,7 @@ const Welcome = () => {
 
       <h1>Welcome!</h1>
 
-      <p><Link to="/dash/users/new">Home</Link></p>
+      <p><Link to="/">Home</Link></p>
 
     </section>
   )
