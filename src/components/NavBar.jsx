@@ -12,11 +12,36 @@ const NavBar = () => {
   return (
     <header className="nav-header">
       <div className="nav-header__container">
-        <Link to="/">
-          <h1 className="nav-header__title">Navbar</h1>
-        </Link>
+        <div className="logo">
+          <Link to="/">
+            <h1 className="nav-header__title">Navbar</h1>
+          </Link>
+        </div>
         <nav className="nav-header__nav">
-          <button onClick={sendLogout}>Logout</button>
+          <ul>
+
+            <li>
+              <Link onClick={sendLogout} to="/">
+                Logout
+              </Link>
+            </li>
+            <li>
+              <Link to="/login">
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link to="/register">
+                Register
+              </Link>
+            </li>
+            <li>
+              <Link to="/protected">
+                Protected
+              </Link>
+            </li>
+
+          </ul>
         </nav>
       </div>
     </header>

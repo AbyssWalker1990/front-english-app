@@ -58,6 +58,10 @@
 }
 
 /* || GENERAL STYLES */
+#main-container {
+  display: flex;
+  /* min-height: 90vh; */
+}
 
 body {
   font-family: 'Nunito', sans-serif;
@@ -130,13 +134,64 @@ a:focus-visible {
 /* || HEADER, FOOTER */
 
 header.nav-header {
+  width: 100%;
   background-color: grey;
+  display: flex;
+}
+
+.nav-header__container {
+  margin-inline: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
   display: flex;
 }
 
 footer {
   background-color: grey;
+  font-size: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
   display: flex;
   justify-content: center;
 }
 
+/* NAVBAR */
+nav {
+  display: flex;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+nav li {
+  padding: 0.5rem;
+  border-top: 1px solid var(--HEADER-COLOR);
+}
+
+nav a {
+  display: block;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+nav a:any-link {
+  color: var(--HEADER-COLOR);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
