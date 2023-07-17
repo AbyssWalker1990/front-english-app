@@ -4,6 +4,7 @@ import Public from './components/Public'
 import Login from './feature/auth/Login'
 import Welcome from './feature/auth/Welcome'
 import Register from './feature/auth/Register'
+import Test from './feature/auth/Test'
 
 function App () {
   return (
@@ -13,6 +14,7 @@ function App () {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="welcome" element={<Welcome />} />
+        <Route path="test" element={<Test />} />
       </Route>
     </Routes>
   )

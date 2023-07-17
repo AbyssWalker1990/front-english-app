@@ -42,6 +42,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       }),
     }),
+    test: builder.query({
+      query: () => ({
+        url: '/test',
+        method: 'GET'
+      })
+    })
   })
 })
 
@@ -50,4 +56,5 @@ export const {
   useSendLogoutMutation,
   useRefreshMutation,
   useRegisterMutation,
+  useTestQuery,
 } = authApiSlice 
