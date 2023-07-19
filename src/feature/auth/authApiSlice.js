@@ -17,9 +17,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted (arg, { dispatch, queryFulfilled }) {
         try {
-          //const { data } = 
-          await queryFulfilled
-          //console.log(data)
+          const { data } = await queryFulfilled
+          console.log('From senLogiout: ', data)
           dispatch(logOut())
           dispatch(apiSlice.util.resetApiState())
         } catch (err) {
@@ -45,7 +44,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
     test: builder.query({
       query: () => ({
         url: '/test',
-        method: 'GET'
+        method: 'GET',
       })
     })
   })

@@ -36,7 +36,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/protected">
+              <Link to="/test">
                 Protected
               </Link>
             </li>

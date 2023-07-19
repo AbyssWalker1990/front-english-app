@@ -3,21 +3,24 @@ import { useTestQuery } from "./authApiSlice"
 
 const Test = () => {
 
-
-  const testData = useTestQuery()
-
   const {
-    data,
+    data: testText,
     isLoading,
     isSuccess,
     isError,
     error
-  } = useTestQuery('notesList')
+  } = useTestQuery()
 
-  console.log('testData: ', testData)
+  if (isSuccess) {
+    console.log('testData: ', testText)
+  } else if (isError) {
+    console.log('Error')
+  }
+
+  const strData = JSON.stringify(testText)
   const content = (
     <div>
-      <h1>{data}</h1>
+      <h1>{strData}</h1>
     </div>
   )
 

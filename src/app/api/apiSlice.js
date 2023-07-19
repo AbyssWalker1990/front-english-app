@@ -6,7 +6,9 @@ const baseQuery = fetchBaseQuery({
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token
-
+    const state = getState()
+    console.log('State: ', state)
+    console.log('token from basequery: ', token)
     if (token) {
       headers.set("authorization", `Bearer ${token}`)
     }
@@ -22,7 +24,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions)
 
   // If you want, handle other status codes, too
-  if (result?.error?.status === 403) {
+  if (result?.error?.status === 403 || result?.error?.status === 401) {
     console.log('sending refresh token')
 
     // send refresh token to get new access token 
@@ -49,6 +51,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['Note', 'User'],
+  tagTypes: ['User'],
   endpoints: builder => ({})
 })
