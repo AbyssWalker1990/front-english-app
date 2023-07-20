@@ -195,3 +195,43 @@ nav a:focus {
   transform: scale(1.2);
   transition: all 0.3s;
 }
+
+
+/* FORM */
+
+.form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.form__input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.form__submit-button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form__submit-button:hover {
+  opacity: 0.8;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #04AA6D;
+}

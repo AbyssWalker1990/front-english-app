@@ -79,44 +79,47 @@ const NewUserForm = () => {
 
 
   const content = (
-    <>
-      <p className={errClass}>{error?.data?.message}</p>
+    <section className="public">
+      <header>
+        <h1>Register</h1>
+      </header>
+      <main className="login">
+        <p className={errClass}>{error?.data?.message}</p>
 
-      <form className="form" onSubmit={onSaveUserClicked}>
-        <div className="form__title-row">
-          <h2>New User</h2>
-        </div>
-        <label className="form__label" htmlFor="username">
-          Username: <span className="nowrap">[3-20 letters]</span></label>
-        <input
-          className={`form__input ${validUserClass}`}
-          id="username"
-          name="username"
-          type="text"
-          autoComplete="off"
-          value={username}
-          onChange={onUsernameChanged}
-        />
+        <form className="form" onSubmit={onSaveUserClicked}>
+          <label className="form__label" htmlFor="username">
+            Username:
+          </label>
+          <input
+            className={`form__input ${validUserClass}`}
+            id="username"
+            name="username"
+            type="text"
+            autoComplete="off"
+            value={username}
+            onChange={onUsernameChanged}
+          />
 
-        <label className="form__label" htmlFor="password">
-          Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
-        <input
-          className={`form__input ${validPwdClass}`}
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={onPasswordChanged}
-        />
-        <div>
-          <button
-            title="Save"
-          // disabled={!canSave}
-          >
-            Save
-          </button>
-        </div>
-        {/* 
+          <label className="form__label" htmlFor="password">
+            Password: </label>
+          <input
+            className={`form__input ${validPwdClass}`}
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={onPasswordChanged}
+          />
+          <div>
+            <button
+              className="form__submit-button"
+              title="Save"
+            // disabled={!canSave}
+            >
+              Save
+            </button>
+          </div>
+          {/* 
         <label className="form__label" htmlFor="roles">
           ASSIGNED ROLES:</label>
         <select
@@ -131,8 +134,9 @@ const NewUserForm = () => {
           {options}
         </select> */}
 
-      </form>
-    </>
+        </form>
+      </main>
+    </section>
   )
 
   return content
