@@ -18,10 +18,11 @@ function App () {
         <Route path="register" element={<Register />} />
         <Route path="welcome" element={<Welcome />} />
         <Route path="test" element={<Test />} />
+        <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
+          <Route path='protected' element={<ProtectedRoute />} />
+        </Route>
       </Route>
-      <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
-        <Route path='protected' element={<ProtectedRoute />} />
-      </Route>
+
     </Routes>
   )
 }

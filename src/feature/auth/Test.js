@@ -1,7 +1,11 @@
 import { useTestQuery } from "./authApiSlice"
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Test = () => {
+
+  const navigate = useNavigate()
 
   const {
     data: testText,
@@ -14,7 +18,7 @@ const Test = () => {
   if (isSuccess) {
     console.log('testData: ', testText)
   } else if (isError) {
-    console.log('Error')
+    navigate('/login')
   }
 
   const strData = JSON.stringify(testText)

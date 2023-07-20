@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useSendLogoutMutation } from '../feature/auth/authApiSlice'
+import useAuth from '../hooks/useAuth'
 
 const NavBar = () => {
   const [sendLogout, {
@@ -9,6 +10,11 @@ const NavBar = () => {
     error
   }] = useSendLogoutMutation()
 
+  const { username } = useAuth()
+  console.log('Username from nav: ', username)
+  let userInfo
+  username ? userInfo = username : userInfo = 'Guest'
+
   return (
     <header className="nav-header">
       <div className="nav-header__container">
@@ -16,6 +22,9 @@ const NavBar = () => {
           <Link to="/">
             <h1 className="nav-header__title">Navbar</h1>
           </Link>
+        </div>
+        <div className='user-info'>
+          <p>Hello, {userInfo}</p>
         </div>
         <nav className="nav-header__nav">
           <ul>

@@ -45,7 +45,15 @@ export const authApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: '/test',
         method: 'GET',
-      })
+      }),
+      async onQueryStarted (arg, { queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled
+          console.log('Data from testQuery: ', data)
+        } catch (err) {
+          if (err.status = 401) console.log(444000111)
+        }
+      }
     })
   })
 })

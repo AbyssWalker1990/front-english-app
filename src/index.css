@@ -166,6 +166,12 @@ nav {
   display: flex;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 nav ul {
   list-style-type: none;
   display: flex;
