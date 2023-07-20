@@ -54,6 +54,11 @@ const NavBar = () => {
                 ProtectedFront
               </Link>
             </li>
+            <li>
+              <Link to="/onlyadmin">
+                OnlyAdmin
+              </Link>
+            </li>
 
           </ul>
         </nav>
