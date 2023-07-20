@@ -37,7 +37,12 @@ const NavBar = () => {
             </li>
             <li>
               <Link to="/test">
-                Protected
+                ProtectedBack
+              </Link>
+            </li>
+            <li>
+              <Link to="/protected">
+                ProtectedFront
               </Link>
             </li>
 
