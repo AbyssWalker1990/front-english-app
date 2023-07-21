@@ -55,8 +55,8 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/onlyadmin">
-                OnlyAdmin
+              <Link to="/adminpage">
+                Admin Page
               </Link>
             </li>
 
