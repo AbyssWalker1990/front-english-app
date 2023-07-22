@@ -10,6 +10,7 @@ import OnlyAdmin from './feature/auth/OnlyAdmin'
 import AdminPage from './feature/admin/AdminPage'
 import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
+import SingleCourseReviewPage from './feature/courses/SingleCourseReviewPage'
 import { ROLES } from './config/roles'
 
 function App () {
@@ -28,7 +29,12 @@ function App () {
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path='onlyadmin' element={<OnlyAdmin />} />
             <Route path='adminpage' element={<AdminPage />} />
-            <Route path='courses' element={<CourseList />} />
+
+            <Route path='courses'>
+              <Route index element={<CourseList />} />
+              <Route path=':id' element={<SingleCourseReviewPage />} />
+            </Route>
+
           </Route>
         </Route>
 
