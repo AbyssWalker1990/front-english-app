@@ -1,5 +1,7 @@
 import { useGetCoursesQuery } from "./courseApiSlice"
 import CoursePromo from "./CoursePromo"
+import { useSelector } from 'react-redux'
+
 
 const CourseList = () => {
   const {
@@ -12,18 +14,39 @@ const CourseList = () => {
 
   console.log(courses)
 
-  if (isSuccess) {
-    console.log('success!!!')
-    // const content = courses.ids.map(id => <CoursePromo key={id} id={id} />)
-    const { ids } = courses
+  let content
 
-    console.log('ids: ', ids)
+  if (isLoading) content = <p>Loading ...</p>
 
-    return ids
+  if (isError) {
+    content = <p className="errmsg">{error?.data?.message}</p>
   }
 
+  if (isSuccess) {
+    console.log('success!!!')
 
+    const { ids } = courses
 
+    const coursesContent = ids?.length
+      ? ids.map(courseId => <CoursePromo key={courseId} id={courseId} />)
+      : null
+
+    content = (
+      <section>
+        <header>
+          <h1>Available Courses:</h1>
+        </header>
+        <hr />
+        <br />
+        <ul>
+          {coursesContent}
+        </ul>
+      </section>
+
+    )
+  }
+
+  return content
 }
 
 export default CourseList

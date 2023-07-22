@@ -1,28 +1,25 @@
+import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
-import {
-  createSelector,
-  createEntityAdapter
-} from "@reduxjs/toolkit";
 
 const courseAdapter = createEntityAdapter({})
 
 const initialState = courseAdapter.getInitialState()
 
-
 export const courseApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getCourses: builder.query({
-      query: () => ({
-        url: '/courses'
-      }),
-      transformResponse: responseData => {
-        const loadedUsers = responseData.courses.map(user => {
-          user.id = user._id
-          return user
-        })
-        return courseAdapter.setAll(initialState, loadedUsers)
+      query: () => '/courses',
+      validateSatatus: (response, result) => {
+        return response.status === 200 && !result.isError
       },
-      providesTags: (result, error, arg) => {
+      transformResponse: responseData => {
+        const loadedCourses = responseData.courses.map(course => {
+          course.id = course._id
+          return course
+        })
+        return courseAdapter.setAll(initialState, loadedCourses)
+      },
+      providedTags: (result, error, arg) => {
         if (result?.ids) {
           return [
             { type: 'Course', id: 'LIST' },
@@ -30,17 +27,23 @@ export const courseApiSlice = apiSlice.injectEndpoints({
           ]
         } else return [{ type: 'Course', id: 'LIST' }]
       }
-    }),
+    })
   })
 })
 
 export const {
-  useGetCoursesQuery
+  useGetCoursesQuery,
 } = courseApiSlice
+
+export const selectCourseResult = courseApiSlice.endpoints.getCourses.select()
+
+const selectCoursesData = createSelector(
+  selectCourseResult,
+  coursesResult => coursesResult.data
+)
 
 export const {
   selectAll: selectAllCourses,
   selectById: selectCourseById,
-  selectIds: selectCourseIds
-  // Pass in a selector that returns the users slice of state
-} = courseAdapter.getSelectors()
+  selectIds: selectCoursesIds
+} = courseAdapter.getSelectors(state => selectCoursesData(state) ?? initialState)
