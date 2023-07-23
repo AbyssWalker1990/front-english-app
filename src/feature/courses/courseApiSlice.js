@@ -9,6 +9,7 @@ export const courseApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getCourses: builder.query({
       query: () => '/courses',
+      keepUnusedDataFor: 3600000, // 1 hour cache time
       validateSatatus: (response, result) => {
         return response.status === 200 && !result.isError
       },

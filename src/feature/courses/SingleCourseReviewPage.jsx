@@ -1,11 +1,22 @@
 import { useSelector } from 'react-redux'
 import { selectCourseById } from '../courses/courseApiSlice'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import Lesson from './Lesson'
 
 const SingleCourseReviewPage = () => {
+  const [currentCourse, setCurrentCourse] = useState({})
   const { id } = useParams()
   const course = useSelector(state => selectCourseById(state, id))
-  const { lessons } = course
+
+  useEffect(() => {
+    setCurrentCourse(course)
+    console.log('From state: ', currentCourse)
+  }, [course, currentCourse])
+
+  const formattedLessons = course.lessons.map(lesson => (
+    <Lesson key={lesson._id} lesson={lesson} />
+  ))
 
   return (
     <>
@@ -17,7 +28,7 @@ const SingleCourseReviewPage = () => {
           <h2>{course.title}</h2>
           <p>{course.description}</p>
           <hr />
-          <p>{JSON.stringify(lessons)}</p>
+          {formattedLessons}
         </div>
       </section>
     </>
