@@ -13,6 +13,7 @@ export const courseApiSlice = apiSlice.injectEndpoints({
       validateSatatus: (response, result) => {
         return response.status === 200 && !result.isError
       },
+      refetchOnMountOrArgChange: true,
       transformResponse: responseData => {
         const loadedCourses = responseData.courses.map(course => {
           course.id = course._id
@@ -28,12 +29,21 @@ export const courseApiSlice = apiSlice.injectEndpoints({
           ]
         } else return [{ type: 'Course', id: 'LIST' }]
       }
-    })
+    }),
+    getCourseById: builder.query({
+      query: (courseId) => `courses/${courseId}`,
+    }),
+    providedTags: (result, error, arg) => {
+      return [
+        { type: 'Course', id: result._id }
+      ]
+    }
   })
 })
 
 export const {
   useGetCoursesQuery,
+  useGetCourseByIdQuery
 } = courseApiSlice
 
 export const selectCourseResult = courseApiSlice.endpoints.getCourses.select()

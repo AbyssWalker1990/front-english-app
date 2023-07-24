@@ -11,8 +11,9 @@ import AdminPage from './feature/admin/AdminPage'
 import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
-import SingleCourseReviewPage from './feature/courses/SingleCourseReviewPage'
+import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
 import { ROLES } from './config/roles'
+import Prefetch from './feature/auth/Prefetch'
 
 function App () {
   return (
@@ -25,19 +26,23 @@ function App () {
         <Route path="test" element={<Test />} />
 
         <Route element={<PersistLogin />}>
-          <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
-            <Route path='protected' element={<ProtectedRoute />} />
+          <Route element={<Prefetch />}>
+            <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
+              <Route path='protected' element={<ProtectedRoute />} />
 
-            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-              <Route path='onlyadmin' element={<OnlyAdmin />} />
-              <Route path='adminpage' element={<AdminPage />} />
+              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                <Route path='onlyadmin' element={<OnlyAdmin />} />
+                <Route path='adminpage' element={<AdminPage />} />
 
-              <Route path='courses'>
-                <Route index element={<CourseList />} />
-                <Route path=':id' element={<SingleCourseReviewPage />} />
+                <Route path='courses'>
+                  <Route index element={<CourseList />} />
+
+                  <Route path=':id' element={<MemoizedSingleCourseAdmin />} />
+
+                </Route>
               </Route>
-            </Route>
 
+            </Route>
           </Route>
         </Route>
       </Route>

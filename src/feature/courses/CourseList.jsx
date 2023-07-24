@@ -1,7 +1,5 @@
 import { useGetCoursesQuery } from "./courseApiSlice"
 import CoursePromo from "./CoursePromo"
-import { useSelector } from 'react-redux'
-
 
 const CourseList = () => {
   const {
@@ -23,7 +21,6 @@ const CourseList = () => {
   }
 
   if (isSuccess) {
-    console.log('success!!!')
 
     const { ids } = courses
 
@@ -42,8 +39,8 @@ const CourseList = () => {
           {coursesContent}
         </ul>
       </section>
-
     )
+    console.log(content)
   }
 
   return content

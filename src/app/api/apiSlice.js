@@ -53,5 +53,6 @@ export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: ['User', 'Course'],
   keepUnusedDataFor: 3600000, // 1 hour cache time
+  // refetchOnReconnect: true,
   endpoints: builder => ({})
 })
