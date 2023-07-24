@@ -103,6 +103,10 @@ a:focus-visible {
 
 /* || PAGES */
 
+#main-container {
+  padding-bottom: 5rem;
+}
+
 .public,
 .welcome {
   display: flex;

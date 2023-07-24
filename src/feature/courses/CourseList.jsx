@@ -35,7 +35,7 @@ const CourseList = () => {
     const { ids } = courses
 
     const coursesContent = ids?.length
-      ? ids.map(courseId => <CoursePromo key={courseId} id={courseId} />)
+      ? ids.map(courseId => <CoursePromo key={courseId} id={courseId} refetch={refetch} />)
       : null
 
     content = (
@@ -48,6 +48,9 @@ const CourseList = () => {
         <ul>
           {coursesContent}
         </ul>
+        <br />
+        <hr />
+        <br />
         <button onClick={onCreateCourseHandle}>
           CREATE COURSE
         </button>

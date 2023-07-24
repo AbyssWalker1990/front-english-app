@@ -42,13 +42,23 @@ export const courseApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [
         { type: 'Course', id: 'LIST' }
       ]
-    })
+    }),
+    deleteCourse: builder.mutation({
+      query: (id) => ({
+        url: `/courses/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [
+        { type: 'Course', id: 'LIST' }
+      ]
+    }),
   })
 })
 
 export const {
   useGetCoursesQuery,
-  useAddNewCourseMutation
+  useAddNewCourseMutation,
+  useDeleteCourseMutation
 } = courseApiSlice
 
 export const selectCourseResult = courseApiSlice.endpoints.getCourses.select()
