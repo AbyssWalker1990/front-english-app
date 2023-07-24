@@ -21,9 +21,14 @@ const CoursePromo = ({ id, refetch }) => {
       <Link to={`/courses/${id}`}><h2>{course.title}</h2></Link>
       <p>{course.description.substr(0, 150) + ' ...'}</p>
       <br />
-      <button onClick={onDeleteHandle}>
-        DELETE COURSE
-      </button>
+      <div className="course-list-button">
+        <button>
+          EDIT COURSE
+        </button>
+        <button onClick={onDeleteHandle}>
+          DELETE COURSE
+        </button>
+      </div>
     </li>
   } else return null
 

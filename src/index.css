@@ -135,6 +135,27 @@ a:focus-visible {
   content: "➜ "
 }
 
+ul.course-list {
+  width: 100%;
+}
+
+ul.course-list li {
+  border: 1px solid white;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+section {
+  width: 100%;
+}
+
+.course-list-button {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 2rem;
+  ;
+}
+
 /* || HEADER, FOOTER */
 
 header.nav-header {

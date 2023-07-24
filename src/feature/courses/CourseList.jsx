@@ -45,7 +45,7 @@ const CourseList = () => {
         </header>
         <hr />
         <br />
-        <ul>
+        <ul className="course-list">
           {coursesContent}
         </ul>
         <br />
