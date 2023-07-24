@@ -1,5 +1,6 @@
 import { useGetCoursesQuery } from "./courseApiSlice"
 import CoursePromo from "./CoursePromo"
+import { useAddNewCourseMutation } from "./courseApiSlice"
 
 const CourseList = () => {
   const {
@@ -7,8 +8,17 @@ const CourseList = () => {
     isLoading,
     isSuccess,
     isError,
+    refetch,
     error
   } = useGetCoursesQuery()
+
+  const [addNewCourse] = useAddNewCourseMutation()
+
+  const onCreateCourseHandle = () => {
+    console.log('Creating Course')
+    addNewCourse()
+    refetch()
+  }
 
   console.log(courses)
 
@@ -38,9 +48,13 @@ const CourseList = () => {
         <ul>
           {coursesContent}
         </ul>
+        <button onClick={onCreateCourseHandle}>
+          CREATE COURSE
+        </button>
       </section>
     )
     console.log(content)
+
   }
 
   return content

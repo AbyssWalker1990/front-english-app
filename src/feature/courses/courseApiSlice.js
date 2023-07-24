@@ -1,5 +1,6 @@
 import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
+import initialCourseData from "../../config/initialCourseData";
 
 const courseAdapter = createEntityAdapter({})
 
@@ -30,20 +31,24 @@ export const courseApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: 'Course', id: 'LIST' }]
       }
     }),
-    getCourseById: builder.query({
-      query: (courseId) => `courses/${courseId}`,
-    }),
-    providedTags: (result, error, arg) => {
-      return [
-        { type: 'Course', id: result._id }
+    addNewCourse: builder.mutation({
+      query: () => ({
+        url: '/courses',
+        method: 'POST',
+        body: {
+          ...initialCourseData
+        }
+      }),
+      invalidatesTags: [
+        { type: 'Course', id: 'LIST' }
       ]
-    }
+    })
   })
 })
 
 export const {
   useGetCoursesQuery,
-  useGetCourseByIdQuery
+  useAddNewCourseMutation
 } = courseApiSlice
 
 export const selectCourseResult = courseApiSlice.endpoints.getCourses.select()
