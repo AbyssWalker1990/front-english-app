@@ -31,8 +31,21 @@ const SingleCourseAdmin = () => {
 
     const course = courses.entities[id]
 
+    const { lessons } = course
+
+    const lessonsContent = lessons.map(lesson => (
+      <Lesson key={lesson._id} lesson={lesson} />
+    ))
+
     content = (
-      <h1>{course.title}</h1>
+      <section>
+        <header>Course: {course.title}</header>
+        <main>
+          <p>Description: {course.description}</p>
+          {lessonsContent}
+        </main>
+      </section>
+
     )
     console.log(content)
   }
