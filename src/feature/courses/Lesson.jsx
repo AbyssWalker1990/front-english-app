@@ -8,8 +8,6 @@ const Lesson = ({ lesson }) => {
     <Exercise key={exercise._id} exercise={exercise} />
   ))
 
-
-
   return (
     <article className="lesson">
       <header>

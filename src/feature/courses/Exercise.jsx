@@ -2,7 +2,7 @@
 
 const Exercise = ({ exercise }) => {
   return (
-    <div className="exercise">
+    <div key={exercise._id} className="exercise">
       <p>{exercise.exercisePos}. {exercise.exerciseDescription}</p>
       <div className="answers">
         {exercise.exerciseQuizAnswers.map(answer => (
