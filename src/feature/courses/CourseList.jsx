@@ -1,6 +1,7 @@
 import { useGetCoursesQuery } from "./courseApiSlice"
 import CoursePromo from "./CoursePromo"
 import { useAddNewCourseMutation } from "./courseApiSlice"
+import { Link } from "react-router-dom"
 
 const CourseList = () => {
   const {

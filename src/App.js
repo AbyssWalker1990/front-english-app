@@ -12,6 +12,7 @@ import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
 import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
+import EditCourse from './feature/courses/EditCourse'
 import { ROLES } from './config/roles'
 import Prefetch from './feature/auth/Prefetch'
 
@@ -38,6 +39,7 @@ function App () {
                   <Route index element={<CourseList />} />
 
                   <Route path=':id' element={<MemoizedSingleCourseAdmin />} />
+                  <Route path=':id/edit' element={<EditCourse />} />
 
                 </Route>
               </Route>
