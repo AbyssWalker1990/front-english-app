@@ -319,3 +319,64 @@ input[type="text"]:focus,
 input[type="password"]:focus {
   border-color: #04AA6D;
 }
+
+
+/* ANIMATION */
+
+.animation-test {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.animated-top {
+  background-color: #00bfff;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  position: absolute;
+  top: -300px;
+  left: 25%;
+  animation: showWelcomeTop 0.5s ease-in-out 1s forwards;
+}
+
+@keyframes showWelcomeTop {
+  0% {
+    top: -350px;
+  }
+
+  80% {
+    top: 30px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+.animated-bot {
+  background-color: #f7ff01;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  position: absolute;
+  bottom: -350px;
+  left: 25%;
+  animation: showWelcomeBot 0.5s ease-in-out 1s forwards;
+}
+
+@keyframes showWelcomeBot {
+  0% {
+    bottom: -300px;
+  }
+
+  80% {
+    bottom: 30px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
