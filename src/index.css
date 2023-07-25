@@ -25,6 +25,18 @@
 }
 
 /* || UTILITY CLASSES */
+.border {
+  border: 1px solid white;
+}
+
+.vert-margin {
+  margin-block: 0.5rem;
+}
+
+.padding-all {
+  padding: 0.25rem;
+}
+
 .errmsg {
   display: inline-block;
   background-color: var(--TABLE-BGCOLOR);
@@ -147,6 +159,7 @@ ul.course-list li {
 
 section {
   width: 100%;
+  padding-inline: 1rem;
 }
 
 .course-list-button {
@@ -154,6 +167,46 @@ section {
   justify-content: space-between;
   padding-inline: 2rem;
   ;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 0.5rem;
+}
+
+
+/* || Accordion */
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 /* || HEADER, FOOTER */

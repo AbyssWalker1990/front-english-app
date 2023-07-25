@@ -24,7 +24,6 @@ const CoursePromo = ({ id, refetch }) => {
       <div className="course-list-button">
         <button>
           <Link to={`/courses/${id}/edit`}>EDIT COURSE</Link>
-
         </button>
         <button onClick={onDeleteHandle}>
           DELETE COURSE

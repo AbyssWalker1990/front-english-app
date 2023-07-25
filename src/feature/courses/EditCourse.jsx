@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react'
 import { useGetCoursesQuery } from './courseApiSlice'
 import { useParams } from 'react-router-dom'
 import EditCourseForm from './EditCourseForm'
 
 const EditCourse = () => {
   const { id } = useParams()
-  const [curTitle, setCurTitle] = useState('')
 
   const {
     data: courses,
