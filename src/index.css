@@ -25,6 +25,10 @@
 }
 
 /* || UTILITY CLASSES */
+.hidden {
+  display: none;
+}
+
 .border {
   border: 1px solid white;
 }
