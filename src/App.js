@@ -12,7 +12,7 @@ import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
 import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
-import EditCourse from './feature/courses/EditCourse'
+import EditCourse from './feature/courses/edit/EditCourse'
 import { ROLES } from './config/roles'
 import Prefetch from './feature/auth/Prefetch'
 

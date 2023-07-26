@@ -1,4 +1,4 @@
-import { useGetCoursesQuery } from './courseApiSlice'
+import { useGetCoursesQuery } from '../courseApiSlice'
 import { useParams } from 'react-router-dom'
 import EditCourseForm from './EditCourseForm'
 

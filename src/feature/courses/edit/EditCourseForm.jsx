@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import EditLessonForm from './EditLessonForm'
-import { useUpdateCourseMutation } from './courseApiSlice'
+import { useUpdateCourseMutation } from '../courseApiSlice'
+import { SaveButton } from './buttons/SaveButton'
 
 
 const EditCourseForm = ({ course }) => {
@@ -38,10 +39,14 @@ const EditCourseForm = ({ course }) => {
     }))
   }
 
-
-
   const lessonsContent = lessons.map(lesson => (
-    <EditLessonForm key={lesson._id} lesson={lesson} />
+    <EditLessonForm
+      key={lesson._id}
+      lesson={lesson}
+      setCurCourse={setCurCourse}
+      curCourse={curCourse}
+      updateCourse={updateCourse}
+    />
   ))
 
   return (
@@ -64,7 +69,7 @@ const EditCourseForm = ({ course }) => {
             defaultValue={description}
           />
         </article>
-        <button onClick={onSaveChanges}>Save Changes</button>
+        <SaveButton curCourse={curCourse} updateCourse={updateCourse} />
       </header>
       <br />
       <hr />
