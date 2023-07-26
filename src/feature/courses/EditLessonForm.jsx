@@ -1,7 +1,12 @@
 import EditExercisesForm from "./EditExercisesForm"
+import EditExercisesBlockForm from "./EditExercisesBlockForm"
 
 const EditLessonForm = ({ lesson }) => {
-  const { lessonTitle, lessonPosition, lessonDescription, lessonExercises } = lesson
+  const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } = lesson
+
+  const exerciseBlockContent = exercisesBlocks.map(block => (
+    <EditExercisesBlockForm key={block._id} exercisesBlock={block} lessonPosition={lessonPosition} />
+  ))
 
   const lessonContent = (
     <>
@@ -22,7 +27,7 @@ const EditLessonForm = ({ lesson }) => {
       </div>
       <div className="lesson-edit-form border padding-all">
         <h1>HomeWork: </h1>
-        <EditExercisesForm key={lessonExercises._id} exercises={lessonExercises} lessonPosition={lessonPosition} />
+        {exerciseBlockContent}
       </div>
     </>
   )

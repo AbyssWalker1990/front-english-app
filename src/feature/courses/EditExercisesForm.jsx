@@ -3,7 +3,7 @@ import React from 'react'
 const EditExercisesForm = ({ exercises, lessonPosition }) => {
 
   const exerciseContent = exercises.map(exercise => {
-    const { exercisePos, exerciseType, exerciseDescription, exerciseQuizAnswers } = exercise
+    const { exercisePos, exerciseType, exerciseDescription, exerciseQuizAnswers, correctAnswer } = exercise
 
     const exerciseAnswersPromo = exerciseQuizAnswers.map(answer => (
       <div key={`radio-${answer}`}>
@@ -31,8 +31,14 @@ const EditExercisesForm = ({ exercises, lessonPosition }) => {
             {exerciseAnswersPromo}
           </fieldset>
         </div>
-        <div id='answer-edit'>
+        <div id={`answer-edit-${exercise._id}`}>
           {exerciseAnswersEdit}
+        </div>
+        <div id={`correct-answer-edit-${exercise._id}`}>
+          <p>Correct answer: </p>
+          <input type="text"
+            id={`correct-answer-input-${exercise._id}`}
+            defaultValue={correctAnswer} />
         </div>
       </div>
     )
