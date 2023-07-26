@@ -16,7 +16,13 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse }) => {
   }
 
   const exerciseBlockContent = exercisesBlocks.map(block => (
-    <EditExercisesBlockForm key={block._id} exercisesBlock={block} lessonPosition={lessonPosition} />
+    <EditExercisesBlockForm
+      key={block._id}
+      exercisesBlock={block}
+      lessonPosition={lessonPosition}
+      curCourse={curCourse}
+      setCurCourse={setCurCourse}
+    />
   ))
 
   const lessonContent = (
