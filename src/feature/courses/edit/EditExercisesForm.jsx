@@ -22,6 +22,22 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
       })
     }
 
+    const onExerciseChange = (e) => {
+      const splittedId = e.target.id.split('-')
+      const curExercisePosition = (Number(splittedId[splittedId.length - 2]) - 1)
+      const key = splittedId[splittedId.length - 1]
+
+      console.log('curExercisePosition: ', curExercisePosition)
+      const lessonIndex = lessonPosition - 1
+      const blockIndex = blockPosition - 1
+      setCurCourse(prevState => {
+        const duplicate = JSON.parse(JSON.stringify(prevState))
+        const result = duplicate.lessons[lessonIndex].exercisesBlocks[blockIndex].blockExercises[curExercisePosition][key] = e.target.value
+        console.log('result Now: ', result)
+        return duplicate
+      })
+    }
+
     const exerciseAnswersPromo = exerciseQuizAnswers.map(answer => (
       <div key={`radio-${answer}`}>
         <input type="radio" id={answer.id} name={`exercise-${exercisePos}`} value={answer} />
@@ -41,16 +57,6 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
       </div>
     ))
 
-    const onExerciseChange = (e) => {
-      const splittedId = e.target.id.split('-')
-      const curLessonPosition = (Number(splittedId[splittedId.length - 2]) - 1)
-      const key = splittedId[splittedId.length - 1]
-      setCurCourse(prevState => {
-        const duplicate = JSON.parse(JSON.stringify(prevState))
-        duplicate.lessons[curLessonPosition][key] = e.target.value
-        return duplicate
-      })
-    }
 
     return (
       <div key={`key-exercise-${exercise._id}-${lessonPosition}`} id={`exercise-${exercise._id}-${lessonPosition}`} className='border padding-all'>
@@ -64,7 +70,17 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
             <option value="quiz">quiz</option>
             <option value="not-quiz">not-quiz</option>
           </select>
-          <p>Exercise description: {exerciseDescription}</p>
+          <div>
+            <label htmlFor={`edit-${exercisePos}-exerciseDescription`}>Exercise Description: </label>
+          </div>
+          <textarea
+            id={`edit-${exercisePos}-exerciseDescription`}
+            rows="4"
+            cols="50"
+            onChange={onExerciseChange}
+            defaultValue={exerciseDescription}
+          />
+
         </div>
         <div id={`quiz-options-${exercise._id}`} className='hidden'>
           < fieldset >
@@ -79,7 +95,8 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
         <div id={`correct-answer-edit-${exercise._id}`}>
           <p>Correct answer: </p>
           <input type="text"
-            id={`correct-answer-input-${exercise._id}`}
+            id={`edit-${exercisePos}-correctAnswer`}
+            onChange={onExerciseChange}
             defaultValue={correctAnswer} />
         </div>
       </div>
