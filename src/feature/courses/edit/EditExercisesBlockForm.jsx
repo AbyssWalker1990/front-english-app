@@ -5,7 +5,6 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
   const { blockPosition, blockDescription, blockExercises } = exercisesBlock
 
   const onChangeBlockDescription = (e) => {
-
     setCurCourse(prevState => {
       const indexLesson = lessonPosition - 1
       const indexBlock = blockPosition - 1
@@ -22,7 +21,11 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
         id={`block-description-${blockPosition}`}
         onChange={onChangeBlockDescription}
         defaultValue={blockDescription} />
-      <EditExercisesForm key={exercisesBlock._id} exercises={blockExercises} lessonPosition={blockPosition} />
+      <EditExercisesForm
+        key={exercisesBlock._id}
+        exercises={blockExercises}
+        lessonPosition={blockPosition}
+        setCurCourse={setCurCourse} />
     </>
   )
 

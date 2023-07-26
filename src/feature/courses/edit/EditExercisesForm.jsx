@@ -1,20 +1,24 @@
 import { onSelectType } from "../utils/utils"
 
-const EditExercisesForm = ({ exercises, lessonPosition }) => {
+const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCourse }) => {
 
   const exerciseContent = exercises.map(exercise => {
     const { exercisePos, exerciseType, exerciseDescription, exerciseQuizAnswers, correctAnswer } = exercise
 
-    const onSelect = (e) => {
-      const splittedTargetId = e.target.id.split('-')
-      const exerciseId = splittedTargetId[splittedTargetId.length - 1]
-      const quizDataElement = document.getElementById(`quiz-options-${exercise._id}`)
-      console.log('quizDataElement: ', quizDataElement)
-      if (e.target.value !== 'quiz') {
-        quizDataElement.classList.add('hidden')
-      } else {
-        quizDataElement.classList.remove('hidden')
-      }
+    const onAnswerEdit = (e) => {
+      const answersBlock = document.getElementById(`answer-edit-${exercise._id}`)
+      const answers = answersBlock.getElementsByTagName('input')
+      console.log(answers)
+      const answersArray = Array.from(answers).map(answer => answer.value)
+      console.log(answersArray)
+      setCurCourse(prevState => {
+        const duplicate = JSON.parse(JSON.stringify(prevState))
+        console.log('blockPosition: ', blockPosition)
+        const result = duplicate.lessons[lessonPosition - 1].exercisesBlocks[0]
+
+        console.log('Result: ', result)
+        return duplicate
+      })
     }
 
     const exerciseAnswersPromo = exerciseQuizAnswers.map(answer => (
@@ -30,6 +34,9 @@ const EditExercisesForm = ({ exercises, lessonPosition }) => {
         <input type="text"
           id={`answer-${exerciseQuizAnswers.indexOf(answer)}`}
           defaultValue={answer} />
+        <button id={`answers-${exercise._id}-${exercisePos}`} onClick={onAnswerEdit}>
+          Save Answers
+        </button>
       </div>
     ))
 
@@ -37,7 +44,10 @@ const EditExercisesForm = ({ exercises, lessonPosition }) => {
       <div key={`key-exercise-${exercise._id}-${lessonPosition}`} id={`exercise-${exercise._id}-${lessonPosition}`} className='border padding-all'>
         <div>
           <label htmlFor="exercise-type"> Choose type:</label>
-          <select id={`exercise-type-${exercise._id}`} onChange={(e) => onSelectType(e, exercise._id)}>
+          <select
+            id={`exercise-type-${exercise._id}`}
+            onChange={(e) => onSelectType(e, exercise._id)}
+          >
             <option value={exerciseType}>{exerciseType}</option>
             <option value="quiz">quiz</option>
             <option value="not-quiz">not-quiz</option>
