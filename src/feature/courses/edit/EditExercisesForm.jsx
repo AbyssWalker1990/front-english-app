@@ -2,6 +2,7 @@ import { onSelectType } from "../utils/utils"
 
 const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCourse }) => {
 
+  console.log('blockPosition from EditExercisesForm: ', blockPosition)
   const exerciseContent = exercises.map(exercise => {
     const { exercisePos, exerciseType, exerciseDescription, exerciseQuizAnswers, correctAnswer } = exercise
 
@@ -40,13 +41,24 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
       </div>
     ))
 
+    const onExerciseChange = (e) => {
+      const splittedId = e.target.id.split('-')
+      const curLessonPosition = (Number(splittedId[splittedId.length - 2]) - 1)
+      const key = splittedId[splittedId.length - 1]
+      setCurCourse(prevState => {
+        const duplicate = JSON.parse(JSON.stringify(prevState))
+        duplicate.lessons[curLessonPosition][key] = e.target.value
+        return duplicate
+      })
+    }
+
     return (
       <div key={`key-exercise-${exercise._id}-${lessonPosition}`} id={`exercise-${exercise._id}-${lessonPosition}`} className='border padding-all'>
         <div>
           <label htmlFor="exercise-type"> Choose type:</label>
           <select
             id={`exercise-type-${exercise._id}`}
-            onChange={(e) => onSelectType(e, exercise._id)}
+            onChange={(e) => onSelectType(e, exercise._id, setCurCourse, lessonPosition, blockPosition, exercisePos)}
           >
             <option value={exerciseType}>{exerciseType}</option>
             <option value="quiz">quiz</option>
@@ -54,7 +66,7 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
           </select>
           <p>Exercise description: {exerciseDescription}</p>
         </div>
-        <div id={`quiz-options-${exercise._id}`}>
+        <div id={`quiz-options-${exercise._id}`} className='hidden'>
           < fieldset >
             <legend>Select correct Answer:</legend>
             {exerciseAnswersPromo}

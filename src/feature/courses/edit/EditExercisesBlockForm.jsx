@@ -24,7 +24,8 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
       <EditExercisesForm
         key={exercisesBlock._id}
         exercises={blockExercises}
-        lessonPosition={blockPosition}
+        lessonPosition={lessonPosition}
+        blockPosition={blockPosition}
         setCurCourse={setCurCourse} />
     </>
   )
