@@ -40,6 +40,16 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
     refetch()
   }
 
+  const handleDeleteExerciseButton = async () => {
+    const blockIndex = blockPosition - 1
+    const lessonIndex = lessonPosition - 1
+    const duplicate = JSON.parse(JSON.stringify(curCourse))
+    const exercisesAfterDelete = blockExercises.slice(0, blockExercises.length - 1)
+    duplicate.lessons[lessonIndex].exercisesBlocks[blockIndex].blockExercises = exercisesAfterDelete
+    await updateCourse({ ...duplicate })
+    refetch()
+  }
+
   const blockContent = (
     <div className="border-green">
       <p>Exercise Block Position: {blockPosition}</p>
@@ -55,7 +65,7 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
           blockPosition={blockPosition}
           setCurCourse={setCurCourse} />
         <button onClick={handleAddExerciseButton}>Add Exercise</button>
-        <button>Delete Exercise</button>
+        <button onClick={handleDeleteExerciseButton}>Delete Exercise</button>
       </div>
     </div>
   )
