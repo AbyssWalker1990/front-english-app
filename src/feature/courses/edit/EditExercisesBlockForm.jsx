@@ -1,6 +1,19 @@
 import EditExercisesForm from "./EditExercisesForm"
+import newExercise from "../data/newExercise"
+import { useGetCoursesQuery, useUpdateCourseMutation } from '../courseApiSlice'
 
 const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, setCurCourse }) => {
+
+  const {
+    refetch
+  } = useGetCoursesQuery()
+
+  const [updateCourse, {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  }] = useUpdateCourseMutation()
 
   const { blockPosition, blockDescription, blockExercises } = exercisesBlock
 
@@ -12,6 +25,19 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
       duplicate.lessons[indexLesson].exercisesBlocks[indexBlock].blockDescription = e.target.value
       return duplicate
     })
+  }
+
+  const handleAddExerciseButton = async () => {
+    const blockIndex = blockPosition - 1
+    const lessonIndex = lessonPosition - 1
+    const duplicate = JSON.parse(JSON.stringify(curCourse))
+    const exercisePosition = blockExercises.length + 1
+    const formattedNewExercise = { ...newExercise, exercisePos: exercisePosition }
+    console.log('formattedNewExercise: ', formattedNewExercise)
+    const newExercises = [...blockExercises, formattedNewExercise]
+    duplicate.lessons[lessonIndex].exercisesBlocks[blockIndex].blockExercises = newExercises
+    await updateCourse({ ...duplicate })
+    refetch()
   }
 
   const blockContent = (
@@ -28,6 +54,8 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
           lessonPosition={lessonPosition}
           blockPosition={blockPosition}
           setCurCourse={setCurCourse} />
+        <button onClick={handleAddExerciseButton}>Add Exercise</button>
+        <button>Delete Exercise</button>
       </div>
     </div>
   )

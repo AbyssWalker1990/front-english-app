@@ -21,14 +21,11 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
       const splittedId = e.target.id.split('-')
       const curExercisePosition = (Number(splittedId[splittedId.length - 2]) - 1)
       const key = splittedId[splittedId.length - 1]
-
-      console.log('curExercisePosition: ', curExercisePosition)
       const lessonIndex = lessonPosition - 1
       const blockIndex = blockPosition - 1
       setCurCourse(prevState => {
         const duplicate = JSON.parse(JSON.stringify(prevState))
-        const result = duplicate.lessons[lessonIndex].exercisesBlocks[blockIndex].blockExercises[curExercisePosition][key] = e.target.value
-        console.log('result Now: ', result)
+        duplicate.lessons[lessonIndex].exercisesBlocks[blockIndex].blockExercises[curExercisePosition][key] = e.target.value
         return duplicate
       })
     }
@@ -41,7 +38,7 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
     ))
 
     const exerciseAnswersEdit = exerciseQuizAnswers.map(answer => (
-      <div key={`edit-answer-${answer}`}>
+      <div key={`edit-answer-${answer}-${Math.random()}`}>
         <p>Answer Position: {exerciseQuizAnswers.indexOf(answer) + 1}</p>
         <input type="text"
           id={`answer-${exerciseQuizAnswers.indexOf(answer)}`}
@@ -54,7 +51,11 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
 
 
     return (
-      <div key={`key-exercise-${exercise._id}-${lessonPosition}`} id={`exercise-${exercise._id}-${lessonPosition}`} className='border padding-all'>
+      <div
+        key={`key-exercise-${exercise._id}-${lessonPosition}`}
+        id={`exercise-${exercise._id}-${lessonPosition}`}
+        className='border padding-all vert-margin border-orange'
+      >
         <div>
           <label htmlFor="exercise-type"> Choose type:</label>
           <select
@@ -78,10 +79,10 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
 
         </div>
         <div id={`quiz-options-${exercise._id}`} className='hidden'>
-          < fieldset >
+          {/* < fieldset >
             <legend>Select correct Answer:</legend>
             {exerciseAnswersPromo}
-          </fieldset>
+          </fieldset> */}
           <div id={`answer-edit-${exercise._id}`}>
             {exerciseAnswersEdit}
           </div>
