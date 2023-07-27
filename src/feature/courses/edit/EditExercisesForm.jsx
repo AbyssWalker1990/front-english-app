@@ -2,7 +2,6 @@ import { onSelectType } from "../utils/utils"
 
 const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCourse }) => {
 
-  console.log('blockPosition from EditExercisesForm: ', blockPosition)
   const exerciseContent = exercises.map(exercise => {
     const { exercisePos, exerciseType, exerciseDescription, exerciseQuizAnswers, correctAnswer } = exercise
 
@@ -14,10 +13,6 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
       console.log(answersArray)
       setCurCourse(prevState => {
         const duplicate = JSON.parse(JSON.stringify(prevState))
-        console.log('blockPosition: ', blockPosition)
-        const result = duplicate.lessons[lessonPosition - 1].exercisesBlocks[0]
-
-        console.log('Result: ', result)
         return duplicate
       })
     }

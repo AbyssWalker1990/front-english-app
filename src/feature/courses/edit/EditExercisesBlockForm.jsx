@@ -15,19 +15,21 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
   }
 
   const blockContent = (
-    <>
+    <div className="border-green">
       <p>Exercise Block Position: {blockPosition}</p>
-      <input type="text"
-        id={`block-description-${blockPosition}`}
-        onChange={onChangeBlockDescription}
-        defaultValue={blockDescription} />
-      <EditExercisesForm
-        key={exercisesBlock._id}
-        exercises={blockExercises}
-        lessonPosition={lessonPosition}
-        blockPosition={blockPosition}
-        setCurCourse={setCurCourse} />
-    </>
+      <div id={`exerciseBlockContent-${exercisesBlock._id}`}>
+        <input type="text"
+          id={`block-description-${blockPosition}`}
+          onChange={onChangeBlockDescription}
+          defaultValue={blockDescription} />
+        <EditExercisesForm
+          key={exercisesBlock._id}
+          exercises={blockExercises}
+          lessonPosition={lessonPosition}
+          blockPosition={blockPosition}
+          setCurCourse={setCurCourse} />
+      </div>
+    </div>
   )
 
   return blockContent

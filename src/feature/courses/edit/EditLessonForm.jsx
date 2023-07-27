@@ -1,8 +1,14 @@
 import EditExercisesBlockForm from "./EditExercisesBlockForm"
 import { SaveButton } from "./buttons/SaveButton"
+import { useGetCoursesQuery } from '../courseApiSlice'
+import newExerciseBlock from "../data/newExerciseBlock"
 
 const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse }) => {
   const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } = lesson
+
+  const {
+    refetch
+  } = useGetCoursesQuery()
 
   const onChangeLessonHeaders = async (e) => {
     const splittedId = e.target.id.split('-')
@@ -27,6 +33,29 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse }) => {
       homework.classList.add('hidden')
       e.target.textContent = 'More...'
     }
+  }
+
+  const handleDeleteExerciseBlock = async () => {
+    const indexLesson = lessonPosition - 1
+    const indexForDelete = curCourse.lessons[indexLesson].exercisesBlocks.length - 1
+    const duplicate = JSON.parse(JSON.stringify(curCourse))
+    duplicate.lessons[indexLesson].exercisesBlocks.splice(indexForDelete, 1)
+    console.log('Block Deleted')
+    await updateCourse({ ...duplicate })
+    refetch()
+  }
+
+  const handleCreateExerciseBlock = async () => {
+    const indexLesson = lessonPosition - 1
+    const duplicate = JSON.parse(JSON.stringify(curCourse))
+    const newBlockPosition = curCourse.lessons[indexLesson].exercisesBlocks.length + 1
+    const oldBlocks = curCourse.lessons[indexLesson].exercisesBlocks
+    const newBlock = { ...newExerciseBlock, blockPosition: newBlockPosition }
+    const formattedBlocks = [...oldBlocks, newBlock]
+    duplicate.lessons[indexLesson].exercisesBlocks = formattedBlocks
+    console.log('New Block Created')
+    await updateCourse({ ...duplicate })
+    refetch()
   }
 
   const exerciseBlockContent = exercisesBlocks.map(block => (
@@ -65,13 +94,15 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse }) => {
         <div className="lesson-edit-form border padding-all">
           <h1>HomeWork: </h1>
           {exerciseBlockContent}
+          <button onClick={handleDeleteExerciseBlock}>Delete Exercise Block</button>
+          <button onClick={handleCreateExerciseBlock}>Add Exercise Block</button>
         </div>
       </div>
     </>
   )
 
   return (
-    <div id={`lesson-${lessonPosition}`} className="border vert-margin padding-all">
+    <div id={`lesson-${lessonPosition}`} className="border vert-margin padding-all border-red">
       {lessonContent}
     </div>
 

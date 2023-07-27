@@ -4,12 +4,9 @@ import { useUpdateCourseMutation, useGetCoursesQuery } from '../courseApiSlice'
 import { SaveButton } from './buttons/SaveButton'
 import newLesson from '../data/newLesson'
 
-
-
 const EditCourseForm = ({ course }) => {
 
   const [curCourse, setCurCourse] = useState('')
-  const [isCreated, setIsCreated] = useState('false')
 
   const {
     refetch
@@ -25,20 +22,6 @@ const EditCourseForm = ({ course }) => {
   useEffect(() => {
     setCurCourse(course)
   }, [course])
-
-  // useEffect(() => {
-  //   const startUpdate = async () => {
-  //     await updateCourse({ ...course })
-
-  //   }
-  //   if (isCreated === true) {
-  //     console.log('Triggered useEffect')
-  //     console.log('inside useeffect: ', course)
-  //     startUpdate()
-  //     setIsCreated(false)
-  //   }
-  // }, [isCreated])
-
 
   const { title, description, lessons } = course
 
