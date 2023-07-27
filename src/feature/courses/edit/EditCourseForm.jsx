@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react'
 import EditLessonForm from './EditLessonForm'
-import { useUpdateCourseMutation } from '../courseApiSlice'
+import { useUpdateCourseMutation, useGetCoursesQuery } from '../courseApiSlice'
 import { SaveButton } from './buttons/SaveButton'
+import newLesson from '../data/newLesson'
+
 
 
 const EditCourseForm = ({ course }) => {
 
   const [curCourse, setCurCourse] = useState('')
+  const [isCreated, setIsCreated] = useState('false')
+
+  const {
+    refetch
+  } = useGetCoursesQuery()
 
   const [updateCourse, {
     isLoading,
@@ -18,6 +25,19 @@ const EditCourseForm = ({ course }) => {
   useEffect(() => {
     setCurCourse(course)
   }, [course])
+
+  // useEffect(() => {
+  //   const startUpdate = async () => {
+  //     await updateCourse({ ...course })
+
+  //   }
+  //   if (isCreated === true) {
+  //     console.log('Triggered useEffect')
+  //     console.log('inside useeffect: ', course)
+  //     startUpdate()
+  //     setIsCreated(false)
+  //   }
+  // }, [isCreated])
 
 
   const { title, description, lessons } = course
@@ -37,6 +57,21 @@ const EditCourseForm = ({ course }) => {
       ...prevState,
       [key]: e.target.value
     }))
+  }
+
+  const handleCreateLessonButton = async () => {
+    const position = curCourse.lessons.length + 1
+    const formattedLesson = { ...newLesson, lessonPosition: position }
+    const updatedLessons = [...curCourse.lessons, formattedLesson]
+    const updatedCourse = { ...curCourse, lessons: updatedLessons }
+    await updateCourse({ ...updatedCourse })
+    console.log('Lesson Added!')
+    showState()
+    refetch()
+  }
+
+  const showState = () => {
+    console.log('showState: ', curCourse)
   }
 
   const lessonsContent = lessons.map(lesson => (
@@ -78,8 +113,11 @@ const EditCourseForm = ({ course }) => {
         <h1>Lessons List: </h1>
         <br />
         {lessonsContent}
+        <div id="lesson-buttons">
+          <button onClick={handleCreateLessonButton}>CREATE LESSON</button>
+          <button>DELETE LESSON</button>
+        </div>
       </article>
-
     </section>
   )
 }
