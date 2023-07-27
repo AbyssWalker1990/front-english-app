@@ -66,13 +66,17 @@ const EditCourseForm = ({ course }) => {
     const updatedCourse = { ...curCourse, lessons: updatedLessons }
     await updateCourse({ ...updatedCourse })
     console.log('Lesson Added!')
-    showState()
     refetch()
   }
 
-  const showState = () => {
-    console.log('showState: ', curCourse)
+  const handleDeleteLessonButton = async () => {
+    const duplicateCourse = JSON.parse(JSON.stringify(curCourse))
+    duplicateCourse.lessons.splice(duplicateCourse.lessons.length - 1, 1)
+    await updateCourse({ ...duplicateCourse })
+    console.log('Lesson Deleted!')
+    refetch()
   }
+
 
   const lessonsContent = lessons.map(lesson => (
     <EditLessonForm
@@ -115,7 +119,7 @@ const EditCourseForm = ({ course }) => {
         {lessonsContent}
         <div id="lesson-buttons">
           <button onClick={handleCreateLessonButton}>CREATE LESSON</button>
-          <button>DELETE LESSON</button>
+          <button onClick={handleDeleteLessonButton}>DELETE LESSON</button>
         </div>
       </article>
     </section>
