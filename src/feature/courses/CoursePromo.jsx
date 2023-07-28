@@ -10,9 +10,9 @@ const CoursePromo = ({ id, refetch }) => {
 
   const [deleteCourse] = useDeleteCourseMutation()
 
-  const onDeleteHandle = () => {
+  const onDeleteHandle = async () => {
     console.log('deleting course')
-    deleteCourse(id)
+    await deleteCourse(id)
     refetch()
   }
 

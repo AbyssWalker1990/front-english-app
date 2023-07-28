@@ -1,7 +1,6 @@
 import { useGetCoursesQuery } from "./courseApiSlice"
 import CoursePromo from "./CoursePromo"
 import { useAddNewCourseMutation } from "./courseApiSlice"
-import { Link } from "react-router-dom"
 
 const CourseList = () => {
   const {
@@ -15,9 +14,9 @@ const CourseList = () => {
 
   const [addNewCourse] = useAddNewCourseMutation()
 
-  const onCreateCourseHandle = () => {
+  const onCreateCourseHandle = async () => {
     console.log('Creating Course')
-    addNewCourse()
+    await addNewCourse()
     refetch()
   }
 
