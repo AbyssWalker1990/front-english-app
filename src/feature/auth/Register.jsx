@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react"
-import { useRegisterMutation } from "./authApiSlice"
+import { useRegisterMutation, useLoginMutation } from "./authApiSlice"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { setCredentials } from "./authSlice"
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
 
-const USER_REGEX = /^[A-z]{3,20}$/
+const USER_REGEX = /^[A-z0-9]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
 const NewUserForm = () => {
+
+  const [login, { isLoading: isLoginLoading }] = useLoginMutation()
 
   const [addNewUser, {
     isLoading,
@@ -19,6 +23,7 @@ const NewUserForm = () => {
   }] = useRegisterMutation()
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -72,6 +77,9 @@ const NewUserForm = () => {
       return
     }
     await addNewUser({ username, email, password, roles })
+    const { accessToken } = await login({ username, password }).unwrap()
+    dispatch(setCredentials({ accessToken }))
+    navigate('/create-profile')
   }
 
   // const options = Object.values(ROLES).map(role => {
