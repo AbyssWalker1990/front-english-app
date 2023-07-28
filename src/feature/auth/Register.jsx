@@ -7,6 +7,7 @@ import { ROLES } from "../../config/roles"
 
 const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
 const NewUserForm = () => {
 
@@ -20,9 +21,12 @@ const NewUserForm = () => {
   const navigate = useNavigate()
 
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [validUsername, setValidUsername] = useState(false)
   const [password, setPassword] = useState('')
+  const [password2, setPassword2] = useState('')
   const [validPassword, setValidPassword] = useState(false)
+  const [validEmail, setValidEmail] = useState(false)
   const [roles, setRoles] = useState(["User"])
 
   useEffect(() => {
@@ -32,6 +36,10 @@ const NewUserForm = () => {
   useEffect(() => {
     setValidPassword(PWD_REGEX.test(password))
   }, [password])
+
+  useEffect(() => {
+    setValidEmail(EMAIL_REGEX.test(email))
+  }, [email])
 
   useEffect(() => {
     if (isSuccess) {
@@ -44,6 +52,8 @@ const NewUserForm = () => {
 
   const onUsernameChanged = e => setUsername(e.target.value)
   const onPasswordChanged = e => setPassword(e.target.value)
+  const onPassword2Changed = e => setPassword2(e.target.value)
+  const onEmailChanged = e => setEmail(e.target.value)
 
   // const onRolesChanged = e => {
   //   const values = Array.from(
@@ -53,13 +63,15 @@ const NewUserForm = () => {
   //   setRoles(values)
   // }
 
-  // const canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading
+  const canSave = [roles.length, validUsername, validPassword, validEmail, password2].every(Boolean) && !isLoading
 
   const onSaveUserClicked = async (e) => {
     e.preventDefault()
-
-    await addNewUser({ username, password, roles })
-
+    if (password !== password2) {
+      alert('Passwords doesnt match!')
+      return
+    }
+    await addNewUser({ username, email, password, roles })
   }
 
   // const options = Object.values(ROLES).map(role => {
@@ -75,7 +87,7 @@ const NewUserForm = () => {
   const errClass = isError ? "errmsg" : "offscreen"
   const validUserClass = !validUsername ? 'form__input--incomplete' : ''
   const validPwdClass = !validPassword ? 'form__input--incomplete' : ''
-  const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
+  // const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
 
 
   const content = (
@@ -100,6 +112,19 @@ const NewUserForm = () => {
             onChange={onUsernameChanged}
           />
 
+          <label className="form__label" htmlFor="email">
+            Email:
+          </label>
+          <input
+            className={`form__input ${validUserClass}`}
+            id="email"
+            name="email"
+            type="text"
+            autoComplete="off"
+            value={email}
+            onChange={onEmailChanged}
+          />
+
           <label className="form__label" htmlFor="password">
             Password: </label>
           <input
@@ -110,11 +135,21 @@ const NewUserForm = () => {
             value={password}
             onChange={onPasswordChanged}
           />
+
+          <label className="form__label" htmlFor="password2">
+            Check Password: </label>
+          <input
+            className={`form__input ${validPwdClass}`}
+            id="password2"
+            name="password2"
+            type="password"
+            onChange={onPassword2Changed}
+          />
           <div>
             <button
               className="form__submit-button"
               title="Save"
-            // disabled={!canSave}
+              disabled={!canSave}
             >
               Save
             </button>

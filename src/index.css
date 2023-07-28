@@ -298,6 +298,11 @@ nav a:focus {
   opacity: 0.8;
 }
 
+.form__submit-button:disabled {
+  background-color: grey;
+  opacity: 0.8;
+}
+
 label {
   font-weight: bold;
 }
