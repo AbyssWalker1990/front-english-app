@@ -11,6 +11,7 @@ import AdminPage from './feature/admin/AdminPage'
 import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
+import CreateProfile from './feature/profile/CreateProfile'
 import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
 import EditCourse from './feature/courses/edit/EditCourse'
 import { ROLES } from './config/roles'
@@ -25,6 +26,7 @@ function App () {
         <Route path="register" element={<Register />} />
         <Route path="welcome" element={<Welcome />} />
         <Route path="test" element={<Test />} />
+        <Route path="create-profile" element={<CreateProfile />} />
 
         <Route element={<PersistLogin />}>
           <Route element={<Prefetch />}>
