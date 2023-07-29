@@ -37,7 +37,8 @@ function CreateProfile () {
 
   const handleForm = (e) => {
     e.preventDefault()
-    console.log(e.target)
+    const payload = { ...formData }
+    console.log(payload)
   }
 
   return (
