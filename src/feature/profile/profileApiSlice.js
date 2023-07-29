@@ -7,8 +7,9 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       query: profileData => ({
         url: '/profile',
         method: 'POST',
-        body: { ...profileData }
-      })
+        body: { profileData },
+        headers: { 'Content-Type': 'multipart/form-data' },
+      }),
     }),
   })
 })

@@ -26,9 +26,10 @@ function App () {
         <Route path="register" element={<Register />} />
         <Route path="welcome" element={<Welcome />} />
         <Route path="test" element={<Test />} />
-        <Route path="create-profile" element={<CreateProfile />} />
 
         <Route element={<PersistLogin />}>
+          <Route path="create-profile" element={<CreateProfile />} />
+
           <Route element={<Prefetch />}>
             <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
               <Route path='protected' element={<ProtectedRoute />} />
