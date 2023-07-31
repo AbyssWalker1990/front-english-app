@@ -15,7 +15,7 @@ function CreateProfile () {
 
 
   const [image, setImage] = useState()
-  const [course, setCourse] = useState()
+  const [course, setCourse] = useState('Default')
   const [objectives, setObjectives] = useState()
   const [priorities, setPriorities] = useState()
   const [hobbies, setHobbies] = useState()
