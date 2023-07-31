@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-
+import { baseUrl } from "../../app/api/apiSlice";
 import { useCreateProfileMutation, useSetAvatarMutation } from "./profileApiSlice";
 import axios from 'axios'
 import { useSelector } from 'react-redux'
@@ -9,6 +9,7 @@ import { selectCurrentToken } from "../auth/authSlice"
 
 function CreateProfile () {
 
+  console.log('baseUrl: ', baseUrl)
   const token = useSelector(selectCurrentToken)
 
   const [setAvatar] = useSetAvatarMutation()
@@ -57,10 +58,11 @@ function CreateProfile () {
 
   const handleAvatar = async (e) => {
     e.preventDefault()
+
     const formData = new FormData()
     formData.append("imageInput", image)
     const result = await axios.post(
-      'http://localhost:3500/profile/set-avatar',
+      `${baseUrl}/profile/set-avatar`,
       formData,
       {
         headers: { 'Content-Type': 'multipart/form-data', "authorization": `Bearer ${token}` },

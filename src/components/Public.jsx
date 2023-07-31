@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom'
 
 const Public = () => {
 
+  const mode = process.env.REACT_APP_MODE
+  console.log('mode: ', mode)
   return (
     <section className="public">
       <header>
         <h1>Main Page</h1>
+        <h2>MODE: {mode}</h2>
       </header>
       <main>
         <div className='animation-test'>
