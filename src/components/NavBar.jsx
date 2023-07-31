@@ -13,7 +13,7 @@ const NavBar = () => {
   const { username } = useAuth()
   console.log('Username from nav: ', username)
   let userInfo
-  username ? userInfo = username : userInfo = 'Guest'
+  username ? userInfo = <Link to='/profile'>{username}</Link> : userInfo = 'Guest'
 
   return (
     <header className="nav-header">

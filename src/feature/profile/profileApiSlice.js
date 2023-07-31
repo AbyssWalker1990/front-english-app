@@ -5,7 +5,7 @@ export const profileApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     setAvatar: builder.mutation({
       query: img => ({
-        url: '/set-avatar',
+        url: 'profile/set-avatar',
         method: 'POST',
         body: { img },
         headers: { 'Content-Type': 'multipart/form-data' },
@@ -17,11 +17,18 @@ export const profileApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: { ...profileData }
       })
+    }),
+    getProfile: builder.query({
+      query: () => ({
+        url: '/profile',
+        method: 'GET'
+      })
     })
   })
 })
 
 export const {
   useSetAvatarMutation,
-  useCreateProfileMutation
+  useCreateProfileMutation,
+  useGetProfileQuery
 } = profileApiSlice

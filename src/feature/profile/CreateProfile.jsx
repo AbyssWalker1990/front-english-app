@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
 import { useCreateProfileMutation, useSetAvatarMutation } from "./profileApiSlice";
 import axios from 'axios'
 import { useSelector } from 'react-redux'
@@ -11,7 +13,9 @@ function CreateProfile () {
 
   const [setAvatar] = useSetAvatarMutation()
 
-  const [createProfile] = useCreateProfileMutation()
+  const [createProfile, { isSuccess }] = useCreateProfileMutation()
+
+  const navigate = useNavigate()
 
 
   const [image, setImage] = useState()
@@ -19,6 +23,10 @@ function CreateProfile () {
   const [objectives, setObjectives] = useState()
   const [priorities, setPriorities] = useState()
   const [hobbies, setHobbies] = useState()
+
+  useEffect(() => {
+    if (isSuccess) navigate('/profile')
+  }, [isSuccess])
 
   const handleImgChange = (e) => {
     const image = e.target.files[0];

@@ -12,6 +12,7 @@ import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
 import CreateProfile from './feature/profile/CreateProfile'
+import Profile from './feature/profile/Profile'
 import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
 import EditCourse from './feature/courses/edit/EditCourse'
 import { ROLES } from './config/roles'
@@ -33,6 +34,7 @@ function App () {
           <Route element={<Prefetch />}>
             <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
               <Route path='protected' element={<ProtectedRoute />} />
+              <Route path="profile" element={<Profile />} />
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path='onlyadmin' element={<OnlyAdmin />} />
