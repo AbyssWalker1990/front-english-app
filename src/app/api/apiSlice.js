@@ -6,7 +6,7 @@ let baseUrl
 if (mode === 'development') {
   baseUrl = 'http://localhost:3500'
 } else {
-  baseUrl = process.env.REACT_APP_MODE
+  baseUrl = process.env.REACT_APP_API_URL
 }
 
 const baseQuery = fetchBaseQuery({
