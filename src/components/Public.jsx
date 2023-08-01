@@ -22,6 +22,7 @@ const Public = () => {
           <p>1. The create profile page is now displaying actual courses.</p>
           <p>2. The user model on backend has been extended to save lesson answers.</p>
           <p>3. The chosen course is automatically set to active.</p>
+          <p>4. Created skeleton for course overview page for student</p>
         </article>
       </main>
     </section>
