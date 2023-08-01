@@ -17,6 +17,10 @@ const Public = () => {
           <div className='animated-bot border'>
           </div>
         </div>
+        <article id="progress">
+          <h1>1.08.2023</h1>
+          <p>1. The create profile page is now displaying actual courses.</p>
+        </article>
       </main>
     </section>
 

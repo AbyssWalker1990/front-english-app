@@ -2,12 +2,20 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { baseUrl } from "../../app/api/apiSlice";
 import { useCreateProfileMutation, useSetAvatarMutation } from "./profileApiSlice";
+import { useGetCoursesQuery } from "../courses/courseApiSlice";
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from "../auth/authSlice"
+import CourseSelect from "./CourseSelect";
 
 
 function CreateProfile () {
+
+  const {
+    data: courses,
+    isLoading,
+    isSuccess: isCoursesSuccess,
+  } = useGetCoursesQuery()
 
   console.log('baseUrl: ', baseUrl)
   const token = useSelector(selectCurrentToken)
@@ -29,31 +37,31 @@ function CreateProfile () {
     if (isSuccess) navigate('/profile')
   }, [isSuccess])
 
+  let coursesList = []
+  if (isCoursesSuccess) {
+    console.log(courses)
+    const courseTitles = courses.ids.map(id => courses.entities[id].title)
+    coursesList.push(...courseTitles)
+    console.log(coursesList)
+  }
+
   const handleImgChange = (e) => {
-    const image = e.target.files[0];
+    const image = e.target.files[0]
     setImage(image)
     console.log(image)
-    const reader = new FileReader();
+    const reader = new FileReader()
     reader.addEventListener('load', () => {
-      localStorage.setItem('image', reader.result);
+      localStorage.setItem('image', reader.result)
       const newImage = document.getElementById(
         'img-from-local-storage',
-      );
-
-      newImage.src = localStorage.getItem('image');
-    });
-
+      )
+      newImage.src = localStorage.getItem('image')
+    })
     if (image) {
-      reader.readAsDataURL(image);
+      reader.readAsDataURL(image)
     }
-    // reader.onload = () => {
-    //   setFormData({ ...formData, imageInput: imageInput.files[0] })
-    // }
-    const newImage = document.getElementById(
-      'img-from-local-storage',
-    );
-
-    newImage.src = localStorage.getItem('image');
+    const newImage = document.getElementById('img-from-local-storage',)
+    newImage.src = localStorage.getItem('image')
   }
 
   const handleAvatar = async (e) => {
@@ -107,13 +115,7 @@ function CreateProfile () {
           <div id="profile-desc" className='padding-all border-orange'>
             <h1>Profile desc</h1>
             <div className='form-item'>
-              <label htmlFor="course"><span className="nowrap">Choose course:&nbsp;&nbsp;&nbsp;</span></label>
-              <select onChange={handleCourse} name="course" id="course">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
+              <CourseSelect coursesList={coursesList} handleCourse={handleCourse} />
             </div>
             <div className='form-item'>
               <label htmlFor="objectives"><span className="nowrap">Objectives:&nbsp;&nbsp;&nbsp;</span></label>
