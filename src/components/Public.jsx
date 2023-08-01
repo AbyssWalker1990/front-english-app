@@ -20,6 +20,8 @@ const Public = () => {
         <article id="progress">
           <h1>1.08.2023</h1>
           <p>1. The create profile page is now displaying actual courses.</p>
+          <p>2. The user model on backend has been extended to save lesson answers.</p>
+          <p>3. The chosen course is automatically set to active.</p>
         </article>
       </main>
     </section>

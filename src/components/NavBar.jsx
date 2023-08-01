@@ -50,8 +50,8 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/protected">
-                ProtectedFront
+              <Link to="/active-course">
+                Active Course
               </Link>
             </li>
             <li>
