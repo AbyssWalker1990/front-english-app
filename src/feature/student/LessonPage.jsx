@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import useAuth from "../../hooks/useAuth"
 import { useGetProfileQuery } from "../profile/profileApiSlice"
 import { useGetCoursesQuery } from "../courses/courseApiSlice"
-import ExerciseList from "./ExerciseList"
 import ExerciseBlock from "./ExerciseBlock"
 
 const LessonPage = () => {
@@ -51,6 +50,7 @@ const LessonPage = () => {
         key={block._id}
         curLesson={curLesson}
         block={block}
+        courseId={courseId}
       />
     ))
   }

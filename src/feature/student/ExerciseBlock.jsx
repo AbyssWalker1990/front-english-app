@@ -1,9 +1,12 @@
 import ExerciseList from "./ExerciseList"
 import { useState, useEffect } from "react"
+import { useSetBlockAnswersMutation } from "../profile/profileApiSlice"
 
-const ExerciseBlock = ({ curLesson, block }) => {
+const ExerciseBlock = ({ curLesson, block, courseId }) => {
   const [answers, setAnswers] = useState([])
   const [isComplete, setIsComplete] = useState(false)
+
+  const [setBlockAnswers] = useSetBlockAnswersMutation()
 
   useEffect(() => {
     let exercises
@@ -24,8 +27,17 @@ const ExerciseBlock = ({ curLesson, block }) => {
         setIsComplete(true)
       }
     }
-
   }, [answers, isComplete])
+
+  const onClickSaveAnswers = async () => {
+    const exerciseBlockData = {
+      courseId,
+      lessonPosition: curLesson.lessonPosition,
+      blockPosition: block.blockPosition,
+      exerciseAnswers: answers
+    }
+    await setBlockAnswers(exerciseBlockData)
+  }
 
   const content = (
     <article key={`${curLesson._id}-block-${block.blockPosition}`} className="border-green vert-margin">
@@ -39,7 +51,7 @@ const ExerciseBlock = ({ curLesson, block }) => {
           setAnswers={setAnswers}
         />
       </main>
-      <button disabled={!isComplete}>Save Answers</button>
+      <button onClick={onClickSaveAnswers} disabled={!isComplete}>Save Answers</button>
     </article>
   )
 

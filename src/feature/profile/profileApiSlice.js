@@ -23,6 +23,13 @@ export const profileApiSlice = apiSlice.injectEndpoints({
         url: '/profile',
         method: 'GET'
       })
+    }),
+    setBlockAnswers: builder.mutation({
+      query: data => ({
+        url: '/profile/answers',
+        method: 'PATCH',
+        body: { ...data }
+      })
     })
   })
 })
@@ -30,5 +37,6 @@ export const profileApiSlice = apiSlice.injectEndpoints({
 export const {
   useSetAvatarMutation,
   useCreateProfileMutation,
-  useGetProfileQuery
+  useGetProfileQuery,
+  useSetBlockAnswersMutation
 } = profileApiSlice
