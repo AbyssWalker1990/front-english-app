@@ -30,6 +30,7 @@ const Public = () => {
           <p>4. Each exercise block now building state structure of exercises like in target course </p>
           <p>5. The exercise block inputs are now synchronized with the state and tracking if all tasks are complete</p>
           <p>6. The exercise block component can now form answers data and send it to the backend.</p>
+          <p>7. Added logic to backend for building whole structure for answers in profile user model</p>
         </article>
       </main>
     </section>
