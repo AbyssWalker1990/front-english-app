@@ -12,6 +12,7 @@ const CourseList = () => {
     error
   } = useGetCoursesQuery()
 
+
   const [addNewCourse] = useAddNewCourseMutation()
 
   const onCreateCourseHandle = async () => {

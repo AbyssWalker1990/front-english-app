@@ -1,4 +1,5 @@
 import useAuth from "../../hooks/useAuth"
+import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useGetProfileQuery } from '../profile/profileApiSlice'
 import { useGetCoursesQuery } from "../courses/courseApiSlice"
@@ -9,8 +10,8 @@ const ActiveCourseOverview = () => {
   const [currentCourse, setCurrentCourse] = useState()
 
   let activeCourse = null
-  let courseData
   let curCourse
+  let lessons = []
 
   useEffect(() => {
     if (activeCourse) setCurrentCourse(activeCourse)
@@ -41,12 +42,22 @@ const ActiveCourseOverview = () => {
     console.log('Courses Loaded')
     const courseId = courses.ids.filter(id => courses.entities[id].title === activeCourse)
     curCourse = courses.entities[courseId]
+    console.log('curCourse: ', curCourse)
+    lessons = curCourse.lessons.map(lesson => (
+      <li key={lesson._id}>
+        {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link>
+      </li>
+    ))
   }
+
+
 
   return (
     <section>
       <h1>ACTIVE COURSE: {activeCourse}</h1>
-      {JSON.stringify(curCourse)}
+      <ul id="lesson-list-studen">
+        {lessons}
+      </ul>
     </section >
   )
 }

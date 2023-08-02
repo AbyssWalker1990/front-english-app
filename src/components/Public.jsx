@@ -23,6 +23,9 @@ const Public = () => {
           <p>2. The user model on backend has been extended to save lesson answers.</p>
           <p>3. The chosen course is automatically set to active.</p>
           <p>4. Created skeleton for course overview page for student</p>
+          <h1>2.08.2023</h1>
+          <p>1. The page for the active course is displaying a lesson list</p>
+          <p>2. Created a dynamic page that includes lesson blocks with exercises</p>
         </article>
       </main>
     </section>
