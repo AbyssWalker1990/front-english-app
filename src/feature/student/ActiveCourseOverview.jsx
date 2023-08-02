@@ -43,13 +43,14 @@ const ActiveCourseOverview = () => {
     const courseId = courses.ids.filter(id => courses.entities[id].title === activeCourse)
     curCourse = courses.entities[courseId]
     console.log('curCourse: ', curCourse)
-    lessons = curCourse.lessons.map(lesson => (
-      <li key={lesson._id}>
-        {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link>
-      </li>
-    ))
+    if (curCourse) {
+      lessons = curCourse.lessons.map(lesson => (
+        <li key={lesson._id}>
+          {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link>
+        </li>
+      ))
+    }
   }
-
 
 
   return (

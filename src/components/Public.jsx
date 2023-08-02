@@ -26,6 +26,7 @@ const Public = () => {
           <h1>2.08.2023</h1>
           <p>1. The page for the active course is displaying a lesson list</p>
           <p>2. Created a dynamic page that includes lesson blocks with exercises</p>
+          <p>3. Fixed bug when page tries to render blocks data before fetching courses from back-end</p>
         </article>
       </main>
     </section>
