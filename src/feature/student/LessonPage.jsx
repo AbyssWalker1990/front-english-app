@@ -4,12 +4,15 @@ import useAuth from "../../hooks/useAuth"
 import { useGetProfileQuery } from "../profile/profileApiSlice"
 import { useGetCoursesQuery } from "../courses/courseApiSlice"
 import ExerciseList from "./ExerciseList"
+import ExerciseBlock from "./ExerciseBlock"
 
 const LessonPage = () => {
   const { username } = useAuth()
   const { courseId, lessonPos } = useParams()
 
   const [lesson, setLesson] = useState()
+  const [results, setResults] = useState()
+
   let curLesson
 
   console.log('courseId: ', courseId)
@@ -44,14 +47,11 @@ const LessonPage = () => {
     console.log('curLesson: ', curLesson)
 
     content = curLesson.exercisesBlocks.map(block => (
-      <article key={`${curLesson._id}-block-${block.blockPosition}`}>
-        <header>
-          <h1>{block.blockPosition}. {block.blockDescription}</h1>
-        </header>
-        <main>
-          <ExerciseList key={block.blockExercises._id} exercises={block.blockExercises} />
-        </main>
-      </article>
+      <ExerciseBlock
+        key={block._id}
+        curLesson={curLesson}
+        block={block}
+      />
     ))
   }
 

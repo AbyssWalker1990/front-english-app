@@ -1,6 +1,8 @@
-
+import { useState } from "react"
 
 const ExerciseList = ({ exercises }) => {
+
+  const [answers, setAnswers] = useState('answers')
 
   let content = null
 
