@@ -1,10 +1,19 @@
-import { useState } from "react"
 
-const ExerciseList = ({ exercises }) => {
+const ExerciseList = ({ exercises, setAnswers }) => {
 
-  const [answers, setAnswers] = useState('answers')
+
 
   let content = null
+
+  const handleAnswerChange = (e, position) => {
+    setAnswers(prevState => {
+      console.log('prevState: ', prevState)
+      const duplicate = JSON.parse(JSON.stringify(prevState))
+      duplicate[position - 1].studentsAnswer = e.target.value
+      return duplicate
+    })
+  }
+
 
   if (exercises) {
     content = exercises.map(exercise => (
@@ -12,7 +21,11 @@ const ExerciseList = ({ exercises }) => {
         <p>{exercise.exercisePos}. {exercise.exerciseDescription}</p>
         <div className="exercise-answer-input">
           <label htmlFor={`${exercise._id}-answer`}>Answer: </label>
-          <input type="text" id={`${exercise._id}-answer`} />
+          <input
+            type="text"
+            onChange={(e) => handleAnswerChange(e, exercise.exercisePos)}
+            id={`${exercise._id}-answer`}
+          />
         </div>
       </div>
     ))

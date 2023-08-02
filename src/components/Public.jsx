@@ -28,6 +28,7 @@ const Public = () => {
           <p>2. Created a dynamic page that includes lesson blocks with exercises</p>
           <p>3. Fixed bug when page tries to render blocks data before fetching courses from back-end</p>
           <p>4. Each exercise block now building state structure of exercises like in target course </p>
+          <p>5. The exercise block inputs are now synchronized with the state and tracking if all tasks are complete</p>
         </article>
       </main>
     </section>
