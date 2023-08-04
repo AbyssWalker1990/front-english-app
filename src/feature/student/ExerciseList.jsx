@@ -1,5 +1,5 @@
 
-const ExerciseList = ({ exercises, setAnswers }) => {
+const ExerciseList = ({ exercises, setAnswers, blockPosition }) => {
 
 
 
@@ -23,8 +23,9 @@ const ExerciseList = ({ exercises, setAnswers }) => {
           <label htmlFor={`${exercise._id}-answer`}>Answer: </label>
           <input
             type="text"
+            onInput={(e) => handleAnswerChange(e, exercise.exercisePos)}
             onChange={(e) => handleAnswerChange(e, exercise.exercisePos)}
-            id={`${exercise._id}-answer`}
+            id={`${exercise._id}-answer-block-${blockPosition}`}
           />
         </div>
       </div>

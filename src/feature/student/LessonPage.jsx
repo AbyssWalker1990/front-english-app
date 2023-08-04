@@ -13,15 +13,17 @@ const LessonPage = () => {
   const [results, setResults] = useState()
 
   let curLesson
+  let content
 
   console.log('courseId: ', courseId)
   console.log('lessonPos: ', lessonPos)
 
-  let content
+
 
   const {
     data: profileData,
-    isSuccess,
+    isSuccess: profileIsSuccess,
+    refetch: refetchProfile
   } = useGetProfileQuery()
 
   const {
@@ -39,8 +41,11 @@ const LessonPage = () => {
     }
   }, [isCoursesSuccess, curLesson])
 
-  if (isCoursesSuccess) {
+  if (isCoursesSuccess && profileIsSuccess) {
     const curCourse = courses.entities[courseId]
+    const studentAnswers = profileData.coursesAnswers.find(answer => answer.courseId === courseId)
+    console.log('studentAnswers: ', studentAnswers)
+    console.log('profileData: ', profileData)
     console.log('curCourse: ', curCourse)
     curLesson = curCourse.lessons.find(lesson => lesson.lessonPosition === Number(lessonPos))
     console.log('curLesson: ', curLesson)
@@ -51,6 +56,7 @@ const LessonPage = () => {
         curLesson={curLesson}
         block={block}
         courseId={courseId}
+        studentAnswers={studentAnswers}
       />
     ))
   }

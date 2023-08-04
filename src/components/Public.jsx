@@ -31,9 +31,12 @@ const Public = () => {
           <p>5. The exercise block inputs are now synchronized with the state and tracking if all tasks are complete</p>
           <p>6. The exercise block component can now form answers data and send it to the backend.</p>
           <p>7. Added logic to backend for building whole structure for answers in profile user model</p>
-          <h1>2.08.2023</h1>
+          <h1>3.08.2023</h1>
           <p>1. Fixed bug with inappropriate positions of lessons and exercise blocks in results model</p>
           <p>2. Answers are now saving in the database</p>
+          <h1>4.08.2023</h1>
+          <p>1. Answers can now be fetched from the back end and prepopulated in the inputs.</p>
+          <p>2. Fixed many synchronization issues with answers.</p>
         </article>
       </main>
     </section>
