@@ -11,7 +11,6 @@ const NavBar = () => {
   }] = useSendLogoutMutation()
 
   const { username } = useAuth()
-  console.log('Username from nav: ', username)
   let userInfo
   username ? userInfo = <Link to='/profile'>{username}</Link> : userInfo = 'Guest'
 

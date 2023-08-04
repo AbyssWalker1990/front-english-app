@@ -26,10 +26,11 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
 
   useEffect(() => {
     if (answers.length > 0) {
-      if (answers.every(answer => answer.studentsAnswer.length > 0)) {
+      if (answers.every(answer => answer.studentsAnswer?.length > 0)) {
         setIsComplete(true)
       }
     }
+    console.log('answers: ', answers)
   }, [answers, isComplete])
 
   useEffect(() => {

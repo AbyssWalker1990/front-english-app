@@ -1,7 +1,7 @@
 import useAuth from "../../hooks/useAuth"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { useGetProfileQuery } from '../profile/profileApiSlice'
+import { useGetProfileQuery, useSetInitAnswersMutation } from '../profile/profileApiSlice'
 import { useGetCoursesQuery } from "../courses/courseApiSlice"
 
 const ActiveCourseOverview = () => {
@@ -12,10 +12,7 @@ const ActiveCourseOverview = () => {
   let activeCourse = null
   let curCourse
   let lessons = []
-
-  useEffect(() => {
-    if (activeCourse) setCurrentCourse(activeCourse)
-  }, [activeCourse])
+  let courseId
 
   const {
     data: profileData,
@@ -31,16 +28,22 @@ const ActiveCourseOverview = () => {
     error
   } = useGetCoursesQuery()
 
+  const [setInitAnswers] = useSetInitAnswersMutation()
+
+  useEffect(() => {
+    if (activeCourse) setCurrentCourse(activeCourse)
+  }, [activeCourse])
 
 
-  if (isSuccess) {
+
+
+
+  if (isCoursesSuccess && isSuccess) {
     console.log('Profile data fetched')
-    activeCourse = profileData.activeCourse
-  }
-
-  if (isCoursesSuccess) {
     console.log('Courses Loaded')
-    const courseId = courses.ids.filter(id => courses.entities[id].title === activeCourse)
+    activeCourse = profileData.activeCourse
+
+    courseId = courses.ids.filter(id => courses.entities[id].title === activeCourse)
     curCourse = courses.entities[courseId]
     console.log('curCourse: ', curCourse)
     if (curCourse) {

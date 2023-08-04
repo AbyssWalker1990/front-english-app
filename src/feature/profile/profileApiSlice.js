@@ -30,6 +30,13 @@ export const profileApiSlice = apiSlice.injectEndpoints({
         method: 'PATCH',
         body: { ...data }
       })
+    }),
+    setInitAnswers: builder.mutation({
+      query: data => ({
+        url: '/profile/init-answers',
+        method: 'POST',
+        body: { ...data }
+      })
     })
   })
 })
@@ -38,5 +45,6 @@ export const {
   useSetAvatarMutation,
   useCreateProfileMutation,
   useGetProfileQuery,
-  useSetBlockAnswersMutation
+  useSetBlockAnswersMutation,
+  useSetInitAnswersMutation
 } = profileApiSlice

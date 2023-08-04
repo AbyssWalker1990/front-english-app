@@ -37,6 +37,8 @@ const Public = () => {
           <h1>4.08.2023</h1>
           <p>1. Answers can now be fetched from the back end and prepopulated in the inputs.</p>
           <p>2. Fixed many synchronization issues with answers.</p>
+          <p>3. Fixed critical problem when app tryed to fetch student answer data before creating skeleton structure for course. IMPORTANT: now structure fo answers is building after chosing course in create account page. The method needs to be triggered each time the student switches courses.</p>
+          <p>4. Refactored the profile controller's methods for handling answers. Still a mess, but with slightly separated logic</p>
         </article>
       </main>
     </section>
