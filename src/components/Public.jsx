@@ -40,6 +40,8 @@ const Public = () => {
           <p>3. Fixed critical problem when app tryed to fetch student answer data before creating skeleton structure for course. IMPORTANT: now structure fo answers is building after chosing course in create account page. The method needs to be triggered each time the student switches courses.</p>
           <p>4. Refactored the profile controller's methods for handling answers. Still a mess, but with slightly separated logic</p>
           <p>5. Fixed bugs with syncing new blocks and lessons with profile that already start course. There WILL BE problems if created more than 1 new block or lesson and user does not start from the first added block</p>
+          <p>Recommend to create new user for testing</p>
+          <p>There are also problems with displaying new added exercises with profiles that already start course. All problems mainly with updating course and profiles that used old version. For testing functionality without these issues - create new account and choose course AFTER update of this course. Stability for modifying </p>
         </article>
       </main>
     </section>
