@@ -6,10 +6,15 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
 
   const [answers, setAnswers] = useState([])
   const [isComplete, setIsComplete] = useState(false)
+  let curBlockStudentsAnswers
 
   const [setBlockAnswers] = useSetBlockAnswersMutation()
-
-  const curBlockStudentsAnswers = studentAnswers.lessons[curLesson.lessonPosition - 1].exercisesBlocks[block.blockPosition - 1].blockExercises
+  // console.log('damaged: ', studentAnswers.lessons[curLesson.lessonPosition - 1].exercisesBlocks[block.blockPosition - 1].blockExercises)
+  try {
+    curBlockStudentsAnswers = studentAnswers.lessons[curLesson.lessonPosition - 1].exercisesBlocks[block.blockPosition - 1].blockExercises
+  } catch (error) {
+    curBlockStudentsAnswers = [{ exercisePos: 1, studentsAnswer: '', }]
+  }
 
   useEffect(() => {
     let exercises
