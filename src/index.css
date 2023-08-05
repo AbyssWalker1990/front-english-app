@@ -53,6 +53,15 @@
   padding: 0.25rem;
 }
 
+.save-button {
+  padding: 0.25rem;
+  background-color: #61b294;
+}
+
+.save-button:hover {
+  background-color: #97cab7;
+}
+
 .errmsg {
   display: inline-block;
   background-color: var(--TABLE-BGCOLOR);

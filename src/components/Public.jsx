@@ -44,6 +44,8 @@ const Public = () => {
           <p>There are also problems with displaying new added exercises with profiles that already start course. All problems mainly with updating course and profiles that used old version. For testing functionality without these issues - create new account and choose course AFTER update of this course. Stability for modifying </p>
           <h1>5.08.2023</h1>
           <p>1. The courses are now refetched correctly after the exercises are updated.</p>
+          <p>2. Added notification for save buttons</p>
+          <p>3. Added more save buttons</p>
         </article>
       </main>
     </section>

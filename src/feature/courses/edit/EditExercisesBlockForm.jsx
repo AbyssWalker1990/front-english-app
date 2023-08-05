@@ -63,7 +63,9 @@ const EditExercisesBlockForm = ({ exercisesBlock, lessonPosition, curCourse, set
           exercises={blockExercises}
           lessonPosition={lessonPosition}
           blockPosition={blockPosition}
-          setCurCourse={setCurCourse} />
+          setCurCourse={setCurCourse}
+          updateCourse={updateCourse}
+          curCourse={curCourse} />
         <button onClick={handleAddExerciseButton}>Add Exercise</button>
         <button onClick={handleDeleteExerciseButton}>Delete Exercise</button>
       </div>

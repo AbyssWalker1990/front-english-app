@@ -61,6 +61,7 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch
       lessonPosition={lessonPosition}
       curCourse={curCourse}
       setCurCourse={setCurCourse}
+      updateCourse={updateCourse}
     />
   ))
 

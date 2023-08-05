@@ -1,7 +1,15 @@
 import { onSelectType } from "../utils/utils"
 import { useState, useEffect } from "react"
+import { SaveButton } from "./buttons/SaveButton"
 
-const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCourse }) => {
+const EditExercisesForm = ({
+  exercises,
+  lessonPosition,
+  blockPosition,
+  setCurCourse,
+  updateCourse,
+  curCourse
+}) => {
   const [key, setKey] = useState(0)
 
   useEffect(() => {
@@ -101,6 +109,7 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
             onChange={onExerciseChange}
             defaultValue={correctAnswer} />
         </div>
+        <SaveButton curCourse={curCourse} updateCourse={updateCourse} />
       </div>
     )
   })
