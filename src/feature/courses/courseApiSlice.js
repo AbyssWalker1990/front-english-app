@@ -61,7 +61,8 @@ export const courseApiSlice = apiSlice.injectEndpoints({
         }
       }),
       invalidatesTags: (result, error, arg) => [
-        { type: 'Course', id: arg.id }
+        { type: 'Course', id: arg.id },
+        { type: 'Course', id: 'LIST' }
       ]
     }),
   })

@@ -1,6 +1,13 @@
 import { onSelectType } from "../utils/utils"
+import { useState, useEffect } from "react"
 
 const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCourse }) => {
+  const [key, setKey] = useState(0)
+
+  useEffect(() => {
+    setKey(prevKey => prevKey + 1)
+  }, [setCurCourse])
+
 
   const exerciseContent = exercises.map(exercise => {
     const { exercisePos, exerciseType, exerciseDescription, exerciseQuizAnswers, correctAnswer } = exercise
@@ -8,7 +15,6 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
     const onAnswerEdit = (e) => {
       const answersBlock = document.getElementById(`answer-edit-${exercise._id}`)
       const answers = answersBlock.getElementsByTagName('input')
-      console.log(answers)
       const answersArray = Array.from(answers).map(answer => answer.value)
       console.log(answersArray)
       setCurCourse(prevState => {
@@ -98,9 +104,6 @@ const EditExercisesForm = ({ exercises, lessonPosition, blockPosition, setCurCou
       </div>
     )
   })
-
-  console.log('exerciseContent: ', typeof exerciseContent)
-
 
   return (
     <>

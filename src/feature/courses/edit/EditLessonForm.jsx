@@ -3,12 +3,8 @@ import { SaveButton } from "./buttons/SaveButton"
 import { useGetCoursesQuery } from '../courseApiSlice'
 import newExerciseBlock from "../data/newExerciseBlock"
 
-const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse }) => {
+const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch }) => {
   const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } = lesson
-
-  const {
-    refetch
-  } = useGetCoursesQuery()
 
   const onChangeLessonHeaders = async (e) => {
     const splittedId = e.target.id.split('-')

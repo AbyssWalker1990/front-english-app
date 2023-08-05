@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom'
 import EditCourseForm from './EditCourseForm'
 
 const EditCourse = () => {
+
   const { id } = useParams()
+
 
   const {
     data: courses,
