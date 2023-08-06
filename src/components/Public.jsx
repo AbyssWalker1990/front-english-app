@@ -46,6 +46,9 @@ const Public = () => {
           <p>1. The courses are now refetched correctly after the exercises are updated.</p>
           <p>2. Added notification for save buttons</p>
           <p>3. Added more save buttons</p>
+          <h1>6.08.2023</h1>
+          <p>1. Students will no longer receive an error message on the lesson page when they attempt to type in the input of a newly created exercise after starting the course.</p>
+          <p>2. Fixed broken auto re-render on adding/deleting new lesson/block/exercise.</p>
         </article>
       </main>
     </section>

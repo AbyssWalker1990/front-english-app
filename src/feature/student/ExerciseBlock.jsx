@@ -16,18 +16,21 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
     curBlockStudentsAnswers = [{ exercisePos: 1, studentsAnswer: '', }]
   }
 
-  useEffect(() => {
-    let exercises
-    if (block) {
-      exercises = block.blockExercises.map(exercise => {
-        return {
-          exercisePos: exercise.exercisePos,
-          studentsAnswer: ''
-        }
-      })
-      setAnswers(exercises)
-    }
-  }, [block])
+  // useEffect(() => {
+  //   let exercises
+  //   if (curLesson) {
+  //     const currentBlock = curLesson.exercisesBlocks.find(curBlock => curBlock.blockPosition === block.blockPosition)
+  //     console.log('currentBlock: ', currentBlock)
+  //     console.log('block.blockPosition: ', block.blockPosition)
+  //     exercises = currentBlock.blockExercises.map(exercise => {
+  //       return {
+  //         exercisePos: exercise.exercisePos,
+  //         studentsAnswer: ''
+  //       }
+  //     })
+  //     setAnswers(exercises)
+  //   }
+  // }, [block])
 
   useEffect(() => {
     if (answers.length > 0) {
@@ -35,10 +38,21 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
         setIsComplete(true)
       }
     }
-    console.log('answers: ', answers)
   }, [answers, isComplete])
 
   useEffect(() => {
+    let exercises
+    if (curLesson) {
+      const currentBlock = curLesson.exercisesBlocks.find(curBlock => curBlock.blockPosition === block.blockPosition)
+      exercises = currentBlock.blockExercises.map(exercise => {
+        return {
+          exercisePos: exercise.exercisePos,
+          studentsAnswer: ''
+        }
+      })
+      setAnswers(exercises)
+    }
+
     const inputBlock = document.getElementById(`block-${block.blockPosition}`)
     // console.log('inputBlock: ', inputBlock)
     if (inputBlock === null) {
@@ -63,6 +77,13 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
           studentsAnswer: exercise.studentsAnswer
         }
       })
+      console.log('updatedExercises: ', updatedExercises)
+      console.log('exercises: ', exercises)
+      if (updatedExercises.length < exercises.length) {
+        const answersRemains = exercises.slice(updatedExercises.length)
+        console.log('answersRemains: ', answersRemains)
+        updatedExercises.push(...answersRemains)
+      }
       setAnswers(updatedExercises)
     }
   }, [block.blockPosition])

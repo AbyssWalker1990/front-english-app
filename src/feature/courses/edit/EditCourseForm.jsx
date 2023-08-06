@@ -24,7 +24,7 @@ const EditCourseForm = ({ course }) => {
       const curCourse = courses.entities[course._id]
       setCurCourse(curCourse)
     }
-  }, [isSuccess])
+  }, [isSuccess, courses.entities])
 
   if (curCourse) {
     const { title, description, lessons } = curCourse
