@@ -49,6 +49,9 @@ const Public = () => {
           <h1>6.08.2023</h1>
           <p>1. Students will no longer receive an error message on the lesson page when they attempt to type in the input of a newly created exercise after starting the course.</p>
           <p>2. Fixed broken auto re-render on adding/deleting new lesson/block/exercise.</p>
+          <h1>7.08.2023</h1>
+          <p>1. Created coursesResultsSchema for students profile</p>
+          <p>1. Created mutation for trigger profile controller to calculate results of lesson</p>
         </article>
       </main>
     </section>
