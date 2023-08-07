@@ -51,7 +51,8 @@ const Public = () => {
           <p>2. Fixed broken auto re-render on adding/deleting new lesson/block/exercise.</p>
           <h1>7.08.2023</h1>
           <p>1. Created coursesResultsSchema for students profile</p>
-          <p>1. Created mutation for trigger profile controller to calculate results of lesson</p>
+          <p>2. Created mutation for trigger profile controller to calculate results of lesson</p>
+          <p>3. Added logic for check answers and record results in coursesResults model</p>
         </article>
       </main>
     </section>
