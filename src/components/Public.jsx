@@ -53,6 +53,9 @@ const Public = () => {
           <p>1. Created coursesResultsSchema for students profile</p>
           <p>2. Created mutation for trigger profile controller to calculate results of lesson</p>
           <p>3. Added logic for check answers and record results in coursesResults model</p>
+          <p>4. Results now can be saved in user profile model</p>
+          <h1>8.08.2023</h1>
+          <p>1. Added page with results for lesson</p>
         </article>
       </main>
     </section>

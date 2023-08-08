@@ -34,24 +34,30 @@ const ActiveCourseOverview = () => {
     if (activeCourse) setCurrentCourse(activeCourse)
   }, [activeCourse])
 
-
-
-
-
   if (isCoursesSuccess && isSuccess) {
     console.log('Profile data fetched')
     console.log('Courses Loaded')
     activeCourse = profileData.activeCourse
 
-    courseId = courses.ids.filter(id => courses.entities[id].title === activeCourse)
+    courseId = courses.ids.find(id => courses.entities[id].title === activeCourse)
     curCourse = courses.entities[courseId]
     console.log('curCourse: ', curCourse)
+    console.log('profileData: ', profileData)
     if (curCourse) {
-      lessons = curCourse.lessons.map(lesson => (
-        <li key={lesson._id}>
-          {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link>
-        </li>
-      ))
+
+      lessons = curCourse.lessons.map(lesson => {
+        console.log('courseId: ', courseId)
+        const results = profileData.coursesAnswers.find(answer => answer.courseId === courseId)
+          .courseResults.find(result => result.lessonPosition === lesson.lessonPosition)
+
+        console.log('results: ', results)
+        return (
+          <li key={lesson._id}>
+            {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link> &nbsp;&nbsp;&nbsp; |
+            {results ? <Link to={`../lesson-result/${courseId}/${lesson.lessonPosition}`} relative="path">&nbsp;&nbsp;&nbsp; Results</Link> : ''}
+          </li>
+        )
+      })
     }
   }
 

@@ -14,6 +14,7 @@ import PersistLogin from './feature/auth/PersistLogin'
 import CreateProfile from './feature/profile/CreateProfile'
 import Profile from './feature/profile/Profile'
 import LessonPage from './feature/student/LessonPage'
+import LessonResults from './feature/student/results/LessonResults'
 import ActiveCourseOverview from './feature/student/ActiveCourseOverview'
 import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
 import EditCourse from './feature/courses/edit/EditCourse'
@@ -39,6 +40,7 @@ function App () {
               <Route path="profile" element={<Profile />} />
               <Route path="active-course" element={<ActiveCourseOverview />} />
               <Route path="active-course/:courseId/:lessonPos" element={<LessonPage />} />
+              <Route path="lesson-result/:courseId/:lessonPos" element={<LessonResults />} />
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path='onlyadmin' element={<OnlyAdmin />} />

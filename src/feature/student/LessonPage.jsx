@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
+
 import useAuth from "../../hooks/useAuth"
 import { useGetProfileQuery, useCalculateLessonResultMutation } from "../profile/profileApiSlice"
 import { useGetCoursesQuery } from "../courses/courseApiSlice"
@@ -11,6 +12,8 @@ const LessonPage = () => {
 
   const [lesson, setLesson] = useState()
   const [results, setResults] = useState()
+
+  const navigate = useNavigate()
 
   let curLesson
   let content
@@ -45,10 +48,10 @@ const LessonPage = () => {
     const lessonData = { courseId, lessonPos }
     const result = await calculateLessonResult(lessonData)
     if (result.error) {
-      console.log('lol')
+      console.log(error)
     } else {
       console.log('Lesson result: ', result)
-
+      navigate(`/lesson-result/${courseId}/${lessonPos}`, { relative: "path" })
     }
   }
 
