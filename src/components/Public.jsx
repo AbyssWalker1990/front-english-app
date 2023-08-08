@@ -56,6 +56,8 @@ const Public = () => {
           <p>4. Results now can be saved in user profile model</p>
           <h1>8.08.2023</h1>
           <p>1. Added page with results for lesson</p>
+          <p>2. Fixed bug with refetching profileData after press Calculate Result button</p>
+          <p>Before pressing 'Calculate Result' be sure that all exercise blocks saved</p>
         </article>
       </main>
     </section>

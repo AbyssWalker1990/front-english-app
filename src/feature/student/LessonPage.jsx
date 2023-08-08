@@ -51,6 +51,7 @@ const LessonPage = () => {
       console.log(error)
     } else {
       console.log('Lesson result: ', result)
+      await refetchProfile()
       navigate(`/lesson-result/${courseId}/${lessonPos}`, { relative: "path" })
     }
   }
