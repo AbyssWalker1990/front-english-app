@@ -13,6 +13,7 @@ const ActiveCourseOverview = () => {
   let curCourse
   let lessons = []
   let courseId
+  let progress = 0
 
   const {
     data: profileData,
@@ -44,18 +45,23 @@ const ActiveCourseOverview = () => {
     console.log('curCourse: ', curCourse)
     console.log('profileData: ', profileData)
     if (curCourse) {
+      progress = `${profileData.coursesAnswers.find(answer => answer.courseId === courseId).courseResults.length}/${curCourse.lessons.length}`
+
 
       lessons = curCourse.lessons.map(lesson => {
         console.log('courseId: ', courseId)
         const results = profileData.coursesAnswers.find(answer => answer.courseId === courseId)
           .courseResults.find(result => result.lessonPosition === lesson.lessonPosition)
 
+
         console.log('results: ', results)
         return (
-          <li key={lesson._id}>
-            {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link> &nbsp;&nbsp;&nbsp; |
-            {results ? <Link to={`../lesson-result/${courseId}/${lesson.lessonPosition}`} relative="path">&nbsp;&nbsp;&nbsp; Results</Link> : ''}
-          </li>
+          <>
+            <li key={lesson._id}>
+              {lesson.lessonPosition}. <Link to={`${curCourse._id}/${lesson.lessonPosition}`}>{lesson.lessonTitle}</Link> &nbsp;&nbsp;&nbsp; |
+              {results ? <Link to={`../lesson-result/${courseId}/${lesson.lessonPosition}`} relative="path">&nbsp;&nbsp;&nbsp; Results</Link> : ''}
+            </li>
+          </>
         )
       })
     }
@@ -67,6 +73,10 @@ const ActiveCourseOverview = () => {
       <h1>ACTIVE COURSE: {activeCourse}</h1>
       <ul id="lesson-list-studen">
         {lessons}
+        <br />
+        <hr />
+        <br />
+        <p>Progress: {progress}</p>
       </ul>
     </section >
   )
