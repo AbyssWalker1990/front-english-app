@@ -1,6 +1,5 @@
 import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
-import initialCourseData from "../../config/initialCourseData";
 
 const courseAdapter = createEntityAdapter({})
 
@@ -35,9 +34,7 @@ export const courseApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: '/courses',
         method: 'POST',
-        body: {
-          ...initialCourseData
-        }
+        body: {}
       }),
       invalidatesTags: [
         { type: 'Course', id: 'LIST' }

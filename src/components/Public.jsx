@@ -63,6 +63,9 @@ const Public = () => {
           <h1>10.08.2023</h1>
           <p>1. Created simple error middleware(back-end)</p>
           <p>2. Moved the register logic to AuthService and refactored it.</p>
+          <h1>11.08.2023</h1>
+          <p>1. Refactored login logic (back-end)</p>
+          <p>2. Refactored refresh token logic (back-end)</p>
         </article>
       </main>
     </section>
