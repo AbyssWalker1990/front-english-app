@@ -66,6 +66,8 @@ const Public = () => {
           <h1>11.08.2023</h1>
           <p>1. Refactored login logic (back-end)</p>
           <p>2. Refactored refresh token logic (back-end)</p>
+          <p>3. Create blank course logic moved to back-end. Title will now be a random number to prevent possible conflicts.</p>
+          <p>4. Refactored update course logic</p>
         </article>
       </main>
     </section>
