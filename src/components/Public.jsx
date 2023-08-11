@@ -68,6 +68,7 @@ const Public = () => {
           <p>2. Refactored refresh token logic (back-end)</p>
           <p>3. Create blank course logic moved to back-end. Title will now be a random number to prevent possible conflicts.</p>
           <p>4. Refactored update course logic</p>
+          <p>5. Refactored upload and set avatar logic</p>
         </article>
       </main>
     </section>
