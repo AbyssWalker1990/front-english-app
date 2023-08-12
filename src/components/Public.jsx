@@ -73,6 +73,7 @@ const Public = () => {
           <p>1. Removed redundant profile api mutation</p>
           <p>2. Moved setInitAnswers logic from controller to service and refactored it</p>
           <p>3. Refactored calculateLessonResult</p>
+          <p>4. Removed many test elements from app</p>
         </article>
       </main>
     </section>

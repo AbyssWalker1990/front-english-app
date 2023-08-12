@@ -44,11 +44,6 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/test">
-                ProtectedBack
-              </Link>
-            </li>
-            <li>
               <Link to="/active-course">
                 Active Course
               </Link>

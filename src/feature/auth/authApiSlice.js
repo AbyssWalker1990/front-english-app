@@ -49,19 +49,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       }),
     }),
-    test: builder.query({
-      query: () => ({
-        url: '/test',
-        method: 'GET',
-      }),
-      async onQueryStarted (arg, { queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled
-        } catch (err) {
-          if (err.status = 401) console.log(444000111)
-        }
-      }
-    })
   })
 })
 
@@ -70,5 +57,4 @@ export const {
   useSendLogoutMutation,
   useRefreshMutation,
   useRegisterMutation,
-  useTestQuery,
 } = authApiSlice 

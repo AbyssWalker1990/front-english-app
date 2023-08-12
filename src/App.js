@@ -2,11 +2,8 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Public from './components/Public'
 import Login from './feature/auth/Login'
-import Welcome from './feature/auth/Welcome'
 import Register from './feature/auth/Register'
 import ProtectedRoute from './feature/auth/ProtectedRoute'
-import Test from './feature/auth/Test'
-import OnlyAdmin from './feature/auth/OnlyAdmin'
 import AdminPage from './feature/admin/AdminPage'
 import CourseList from './feature/courses/CourseList'
 import RequireAuth from './feature/auth/RequireAuth'
@@ -28,8 +25,6 @@ function App () {
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="welcome" element={<Welcome />} />
-        <Route path="test" element={<Test />} />
 
         <Route element={<PersistLogin />}>
           <Route path="create-profile" element={<CreateProfile />} />
@@ -43,7 +38,6 @@ function App () {
               <Route path="lesson-result/:courseId/:lessonPos" element={<LessonResults />} />
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                <Route path='onlyadmin' element={<OnlyAdmin />} />
                 <Route path='adminpage' element={<AdminPage />} />
 
                 <Route path='courses'>
