@@ -72,6 +72,7 @@ const Public = () => {
           <h1>12.08.2023</h1>
           <p>1. Removed redundant profile api mutation</p>
           <p>2. Moved setInitAnswers logic from controller to service and refactored it</p>
+          <p>3. Refactored calculateLessonResult</p>
         </article>
       </main>
     </section>
