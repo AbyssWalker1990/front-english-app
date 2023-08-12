@@ -31,13 +31,6 @@ export const profileApiSlice = apiSlice.injectEndpoints({
         body: { ...data }
       })
     }),
-    setInitAnswers: builder.mutation({
-      query: data => ({
-        url: '/profile/init-answers',
-        method: 'POST',
-        body: { ...data }
-      })
-    }),
     calculateLessonResult: builder.mutation({
       query: lessonData => ({
         url: `/profile/calc-lesson`,
@@ -53,6 +46,5 @@ export const {
   useCreateProfileMutation,
   useGetProfileQuery,
   useSetBlockAnswersMutation,
-  useSetInitAnswersMutation,
   useCalculateLessonResultMutation
 } = profileApiSlice

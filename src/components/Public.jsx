@@ -69,6 +69,9 @@ const Public = () => {
           <p>3. Create blank course logic moved to back-end. Title will now be a random number to prevent possible conflicts.</p>
           <p>4. Refactored update course logic</p>
           <p>5. Refactored upload and set avatar logic</p>
+          <h1>12.08.2023</h1>
+          <p>1. Removed redundant profile api mutation</p>
+          <p>2. Moved setInitAnswers logic from controller to service and refactored it</p>
         </article>
       </main>
     </section>

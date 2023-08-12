@@ -1,7 +1,7 @@
 import useAuth from "../../hooks/useAuth"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { useGetProfileQuery, useSetInitAnswersMutation } from '../profile/profileApiSlice'
+import { useGetProfileQuery } from '../profile/profileApiSlice'
 import { useGetCoursesQuery } from "../courses/courseApiSlice"
 
 const ActiveCourseOverview = () => {
@@ -28,8 +28,6 @@ const ActiveCourseOverview = () => {
     refetch,
     error
   } = useGetCoursesQuery()
-
-  const [setInitAnswers] = useSetInitAnswersMutation()
 
   useEffect(() => {
     if (activeCourse) setCurrentCourse(activeCourse)
