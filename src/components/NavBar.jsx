@@ -1,73 +1,74 @@
-import { Link } from 'react-router-dom'
-import { useSendLogoutMutation } from '../feature/auth/authApiSlice'
-import useAuth from '../hooks/useAuth'
+import { Link } from "react-router-dom";
+import { useSendLogoutMutation } from "../feature/auth/authApiSlice";
+import useAuth from "../hooks/useAuth";
 
 const NavBar = () => {
-  const [sendLogout, {
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  }] = useSendLogoutMutation()
+  const [sendLogout, { isLoading, isSuccess, isError, error }] =
+    useSendLogoutMutation();
 
-  const { username, roles, isAdmin } = useAuth()
-  console.log('isAdmin: ', isAdmin)
-  const userRoles = roles ?? []
-  console.log(userRoles)
-  let userInfo
-  username ? userInfo = <Link to='/profile'>{username}</Link> : userInfo = 'Guest'
+  const { username, roles, isAdmin } = useAuth();
+  console.log("isAdmin: ", isAdmin);
+  const userRoles = roles ?? [];
+  console.log(userRoles);
+  let userInfo;
+  username
+    ? (userInfo = <Link to="/profile">{username}</Link>)
+    : (userInfo = "Guest");
 
-  return (
-    <header className="nav-header">
-      <div className="nav-header__container">
-        <div className="logo">
-          <Link to="/">
-            <h1 className="nav-header__title">Navbar</h1>
+  const logSection = (
+    <div>
+      {username ? (
+        <div className="nav-button">
+          <Link className="nav-button-link" onClick={sendLogout} to="/">
+            вийти
           </Link>
         </div>
-        <nav className="nav-header__nav">
-          <ul>
-
-            {username ? (
-              <li>
-                <Link onClick={sendLogout} to="/">
-                  Logout
-                </Link>
-              </li>
-            ): (
-              <>
-                <li>
-                  <Link to="/login">
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/register">
-                    Register
-                  </Link>
-                </li>
-              </>
-            )}
-
-            {userRoles.includes('Admin') ? (
-              <li>
-                <Link to="/adminpage">
-                  Admin Page
-                </Link>
-              </li>
-            ): null}
-
-            <li>
-              <Link to="/active-course">
-                Active Course
-              </Link>
-            </li>
-
-
-          </ul>
-        </nav>
+      ) : (
+        <div className="nav-button">
+          <Link className="nav-button-link" to="/login">
+            увійти
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+  return (
+    <header className="nav-header">
+      <div className="logo">
+        <Link to="/">
+          <img src="img/logo-sm.png" alt="logo" />
+        </Link>
       </div>
+      <nav>
+        <ul>
+          {userRoles.includes("Admin") ? (
+            <li>
+              <Link to="/adminpage">Admin Page</Link>
+            </li>
+          ) : null}
+
+          <li>
+            <Link to="/active-course">Курси</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Про нас</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Відгуки</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Наші партнери</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Контакти</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </ul>
+      </nav>
+      {logSection}
     </header>
-  )
-}
-export default NavBar
+  );
+};
+export default NavBar;
