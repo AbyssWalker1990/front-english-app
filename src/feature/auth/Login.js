@@ -35,7 +35,7 @@ const Login = () => {
       dispatch(setCredentials({ accessToken }))
       setUsername('')
       setPassword('')
-      navigate('/welcome')
+      navigate('/')
     } catch (err) {
       if (!err.status) {
         setErrMsg('No Server Response');

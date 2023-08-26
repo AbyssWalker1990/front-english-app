@@ -1,27 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600;700&family=Roboto:ital,wght@1,400;1,500&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* || RESET */
+*, 
+*::after, 
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input, 
+button, 
+textarea {
+    font: inherit;
 }
 
 /* || VARIABLES */
 
 :root {
-  /* COLORS */
-  --BGCOLOR: #0F172A;
-  --BORDER-COLOR: #FFF;
-  --COLOR: #FFF;
-  --ERROR: firebrick;
-  --INACTIVE: lightgray;
-  --LINK-COLOR: whitesmoke;
-  --LINK-HOVER: rgba(245, 245, 245, 0.9);
-  --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
-  --STATUS-COMPLETE: limegreen;
-  --STATUS-OPEN: firebrick;
-  --TABLE-BGCOLOR: #FFF;
-  --TABLE-COLOR: #000;
+    /* FONTS */
+    --FF: "Noto Serif", serif;
+    --FF-HEADINGS: "Noto Serif", serif;
+    --FS: clamp(1rem, 2.2vh, 1.5rem);
+
+    /* COLORS */
+    --BGCOLOR: #E9DED2;
+    --BUTTON-COLOR: #57669E;
+    --HEADER-COLOR: #3C4878;
+    --FOOTER-COLOR: #272F4B;
+
+    /* BORDERS */
+    --BORDERS: 1px solid var(--BORDER-COLOR);
+    --BORDER-RADIUS: 15px;
+
+    /* STANSARD PADDING */
+    --PADDING-TB: 0.25em;
+    --PADDING-SIDE: 2.5%;
+
+    /* STANDARD MARGIN */
+    --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
 }
 
 /* || UTILITY CLASSES */
@@ -101,7 +124,7 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--FF);
   min-height: 100vh;
   background-color: var(--BGCOLOR);
   color: var(--COLOR);

@@ -10,7 +10,10 @@ const NavBar = () => {
     error
   }] = useSendLogoutMutation()
 
-  const { username } = useAuth()
+  const { username, roles, isAdmin } = useAuth()
+  console.log('isAdmin: ', isAdmin)
+  const userRoles = roles ?? []
+  console.log(userRoles)
   let userInfo
   username ? userInfo = <Link to='/profile'>{username}</Link> : userInfo = 'Guest'
 
@@ -22,37 +25,44 @@ const NavBar = () => {
             <h1 className="nav-header__title">Navbar</h1>
           </Link>
         </div>
-        <div className='user-info'>
-          <p>Hello, {userInfo}</p>
-        </div>
         <nav className="nav-header__nav">
           <ul>
 
-            <li>
-              <Link onClick={sendLogout} to="/">
-                Logout
-              </Link>
-            </li>
-            <li>
-              <Link to="/login">
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/register">
-                Register
-              </Link>
-            </li>
+            {username ? (
+              <li>
+                <Link onClick={sendLogout} to="/">
+                  Logout
+                </Link>
+              </li>
+            ): (
+              <>
+                <li>
+                  <Link to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register">
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {userRoles.includes('Admin') ? (
+              <li>
+                <Link to="/adminpage">
+                  Admin Page
+                </Link>
+              </li>
+            ): null}
+
             <li>
               <Link to="/active-course">
                 Active Course
               </Link>
             </li>
-            <li>
-              <Link to="/adminpage">
-                Admin Page
-              </Link>
-            </li>
+
 
           </ul>
         </nav>
