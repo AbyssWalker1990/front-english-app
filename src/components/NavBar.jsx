@@ -38,6 +38,14 @@ const NavBar = () => {
       </div>
     </>
   );
+
+  const hamburgerLogSection = (
+    <div id="languageHamburger">
+      <p className="lang-changer">Укр</p>
+      <p className="lang-changer">Eng</p>
+    </div>
+  );
+
   return (
     <header className="nav-header">
       <div className="logo">
@@ -47,13 +55,33 @@ const NavBar = () => {
       </div>
 
       <nav className="hamburger">
+        {hamburgerLogSection}
         <ul>
           {userRoles.includes("Admin") ? (
             <li>
               <Link to="/adminpage">Admin Page</Link>
             </li>
           ) : null}
-
+          {username ? (
+            <>
+              <li>
+                <Link className="nav-button-link" onClick={sendLogout} to="/">
+                  Вийти
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-button-link" onClick={sendLogout} to="/">
+                  Профіль
+                </Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link className="nav-button-link" to="/login">
+                Увійти
+              </Link>
+            </li>
+          )}
           <li>
             <Link to="/active-course">Курси</Link>
           </li>
@@ -79,7 +107,11 @@ const NavBar = () => {
               <Link to="/adminpage">Admin Page</Link>
             </li>
           ) : null}
-
+          {username ? (
+            <li>
+              <Link to="/profile">Профіль</Link>
+            </li>
+          ) : null}
           <li>
             <Link to="/active-course">Курси</Link>
           </li>

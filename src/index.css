@@ -165,9 +165,13 @@ a:focus-visible {
 }
 
 /* || PAGES */
+section {
+  width: 100%;
+}
 
 #main-container {
   display: flex;
+  width: 100%;
   padding-bottom: 5rem;
   min-height: 85vh;
 }
@@ -284,6 +288,7 @@ footer {
 
 footer p {
   color: white;
+  text-align: center;
 }
 
 /* NAVBAR */
@@ -294,14 +299,16 @@ footer p {
   font-weight: 500;
 }
 
-.log-section p:hover {
-  cursor: pointer;
-  font-weight: 700;
-}
-
-#language {
+#language,
+#languageHamburger {
   display: flex;
   gap: 1rem;
+}
+
+#language p,
+#languageHamburger p {
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .menu-button {
@@ -492,9 +499,12 @@ input[type="password"]:focus {
 }
 
 @media screen and (max-width: 1000px) {
-  .log-section,
   nav.main,
   nav.main ul {
+    display: none;
+  }
+
+  .log-section {
     display: none;
   }
 
@@ -559,6 +569,10 @@ input[type="password"]:focus {
   }
 
   :is(header:hover, header:focus-within) .logo {
+    display: none;
+  }
+
+  :is(header:hover, header:focus-within) .log-section {
     display: none;
   }
 
