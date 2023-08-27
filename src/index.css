@@ -583,6 +583,10 @@ input[type="password"]:focus {
     padding-inline: 1rem;
     width: 100%;
   }
+
+  footer p {
+    font-size: 0.75rem;
+  }
 }
 
 #main-content h1 {
