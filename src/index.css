@@ -279,6 +279,11 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  color: white;
 }
 
 /* NAVBAR */

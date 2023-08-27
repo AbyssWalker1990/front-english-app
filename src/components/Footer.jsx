@@ -1,10 +1,10 @@
-
 const Footer = () => {
+  const year = new Date().getFullYear();
 
   return (
     <footer>
-      <h1>Footer</h1>
+      <p>© {year} English With Success, Ltd. All rights reserved.</p>
     </footer>
-  )
-}
-export default Footer
+  );
+};
+export default Footer;
