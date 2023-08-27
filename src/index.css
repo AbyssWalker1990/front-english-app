@@ -167,31 +167,61 @@ a:focus-visible {
 /* || PAGES */
 
 #main-container {
-  padding-bottom: 5rem;
-}
-
-.public,
-.welcome {
   display: flex;
-  flex-direction: column;
+  padding-bottom: 5rem;
+  min-height: 85vh;
+}
+
+section#main-page {
+  gap: 3rem;
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-inline: 1rem;
+}
+
+article#big-logo {
+  padding-left: 5rem;
+  width: 49%;
+}
+
+article#main-content {
+  display: flex;
+  align-items: center;
   gap: 1rem;
+  padding-top: 3rem;
+  padding-right: 5rem;
+  width: 50%;
 }
 
-.public {
-  padding: 1em;
-  flex-grow: 1;
+#main-content h1 {
+  font-family: var(--FF);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--HEADER-COLOR);
 }
 
-.public__main,
+.open-lesson-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 3rem;
+  background-color: var(--BUTTON-COLOR);
+}
+
+a.open-lesson-btn-link {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
 .login {
   flex-grow: 1;
   border-top: 2px solid var(--BORDER-COLOR);
   border-bottom: 2px solid var(--BORDER-COLOR);
   padding: 1em 0;
-}
-
-.public__addr {
-  margin-top: 1em;
 }
 
 .welcome a::before {
@@ -206,11 +236,6 @@ ul.course-list li {
   border: 1px solid white;
   padding: 1rem;
   margin: 0.5rem;
-}
-
-section {
-  width: 100%;
-  padding-inline: 1rem;
 }
 
 .course-list-button {
@@ -531,6 +556,32 @@ input[type="password"]:focus {
   :is(header:hover, header:focus-within) .logo {
     display: none;
   }
+
+  section#main-page {
+    gap: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  article#big-logo {
+    padding-left: 0;
+    width: 70%;
+  }
+
+  article#main-content {
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-inline: 1rem;
+    width: 100%;
+  }
+}
+
+#main-content h1 {
+  text-align: center;
 }
 
 /* ANIMATION */
