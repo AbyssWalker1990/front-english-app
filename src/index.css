@@ -520,8 +520,16 @@ input[type="password"]:focus {
     transform: translateX(-20px) rotate(-45deg);
   }
 
-  :is(header:hover, header:focus-within) nav {
+  :is(header:hover, header:focus-within) nav.hamburger {
     display: block;
+  }
+
+  :is(header:hover, header:focus-within) .menu-icon {
+    display: none;
+  }
+
+  :is(header:hover, header:focus-within) .logo {
+    display: none;
   }
 }
 
