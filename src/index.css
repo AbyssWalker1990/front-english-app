@@ -589,6 +589,10 @@ input[type="password"]:focus {
   text-align: center;
 }
 
+.open-lesson-btn {
+  width: 90%;
+}
+
 /* ANIMATION */
 
 .animation-test {
