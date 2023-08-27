@@ -21,7 +21,6 @@ const useAuth = () => {
     return { username, roles, status, isManager, isAdmin }
   } else {
     return { username: '', roles: [], isManager, isAdmin, status }
-
   }
 
 }

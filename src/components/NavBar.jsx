@@ -16,21 +16,27 @@ const NavBar = () => {
     : (userInfo = "Guest");
 
   const logSection = (
-    <div>
-      {username ? (
-        <div className="nav-button">
-          <Link className="nav-button-link" onClick={sendLogout} to="/">
-            вийти
-          </Link>
+    <>
+      <div className="log-section">
+        <div id="language">
+          <p className="lang-changer">Укр</p>
+          <p className="lang-changer">Eng</p>
         </div>
-      ) : (
-        <div className="nav-button">
-          <Link className="nav-button-link" to="/login">
-            увійти
-          </Link>
-        </div>
-      )}
-    </div>
+        {username ? (
+          <div className="nav-button">
+            <Link className="nav-button-link" onClick={sendLogout} to="/">
+              вийти
+            </Link>
+          </div>
+        ) : (
+          <div className="nav-button">
+            <Link className="nav-button-link" to="/login">
+              увійти
+            </Link>
+          </div>
+        )}
+      </div>
+    </>
   );
   return (
     <header className="nav-header">
@@ -39,7 +45,34 @@ const NavBar = () => {
           <img src="img/logo-sm.png" alt="logo" />
         </Link>
       </div>
-      <nav>
+
+      <nav className="hamburger">
+        <ul>
+          {userRoles.includes("Admin") ? (
+            <li>
+              <Link to="/adminpage">Admin Page</Link>
+            </li>
+          ) : null}
+
+          <li>
+            <Link to="/active-course">Курси</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Про нас</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Відгуки</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Наші партнери</Link>
+          </li>
+          <li>
+            <Link to="/active-course">Контакти</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <nav className="main">
         <ul>
           {userRoles.includes("Admin") ? (
             <li>
@@ -68,6 +101,9 @@ const NavBar = () => {
         </ul>
       </nav>
       {logSection}
+      <button className="menu-button">
+        <div className="menu-icon"></div>
+      </button>
     </header>
   );
 };
