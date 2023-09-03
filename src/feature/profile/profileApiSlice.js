@@ -1,10 +1,9 @@
-import { apiSlice } from "../../app/api/apiSlice"
-
+import { apiSlice } from '../../app/api/apiSlice'
 
 export const profileApiSlice = apiSlice.injectEndpoints({
-  endpoints: builder => ({
+  endpoints: (builder) => ({
     setAvatar: builder.mutation({
-      query: img => ({
+      query: (img) => ({
         url: 'profile/set-avatar',
         method: 'POST',
         body: { img },
@@ -12,33 +11,40 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     createProfile: builder.mutation({
-      query: profileData => ({
+      query: (profileData) => ({
         url: '/profile',
         method: 'POST',
-        body: { ...profileData }
-      })
+        body: { ...profileData },
+      }),
     }),
     getProfile: builder.query({
       query: () => ({
         url: '/profile',
-        method: 'GET'
-      })
+        method: 'GET',
+      }),
     }),
     setBlockAnswers: builder.mutation({
-      query: data => ({
+      query: (data) => ({
         url: '/profile/answers',
         method: 'PATCH',
-        body: { ...data }
-      })
+        body: { ...data },
+      }),
     }),
     calculateLessonResult: builder.mutation({
-      query: lessonData => ({
+      query: (lessonData) => ({
         url: `/profile/calc-lesson`,
         method: 'POST',
-        body: { ...lessonData }
-      })
-    })
-  })
+        body: { ...lessonData },
+      }),
+    }),
+    addAndSetActiveCourse: builder.mutation({
+      query: (purchaseData) => ({
+        url: `/profile/set-course`,
+        method: 'POST',
+        body: { ...purchaseData },
+      }),
+    }),
+  }),
 })
 
 export const {
@@ -46,5 +52,6 @@ export const {
   useCreateProfileMutation,
   useGetProfileQuery,
   useSetBlockAnswersMutation,
-  useCalculateLessonResultMutation
+  useCalculateLessonResultMutation,
+  useAddAndSetActiveCourseMutation,
 } = profileApiSlice

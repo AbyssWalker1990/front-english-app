@@ -85,6 +85,10 @@ button {
   align-self: self-end;
 }
 
+.align-flex-start {
+  align-self: self-start;
+}
+
 .hidden {
   display: none;
 }
@@ -242,6 +246,13 @@ article#main-content {
 #main-content h1 {
   font-family: var(--FF);
   font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--HEADER-COLOR);
+}
+
+#main-content h2 {
+  font-family: var(--FF);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--HEADER-COLOR);
 }
