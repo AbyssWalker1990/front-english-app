@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const PurchaseFinal = () => {
   const { username } = useAuth()
   const [addAndSetActiveCourse] = useAddAndSetActiveCourseMutation()
-  const [refetch] = useGetProfileQuery()
+  const { refetch } = useGetProfileQuery()
 
   const navigate = useNavigate()
 
