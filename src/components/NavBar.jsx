@@ -74,6 +74,9 @@ const NavBar = () => {
                   Профіль
                 </Link>
               </li>
+              <li>
+                <Link to='/active-course'>Активний курс</Link>
+              </li>
             </>
           ) : (
             <li>
@@ -83,7 +86,7 @@ const NavBar = () => {
             </li>
           )}
           <li>
-            <Link to='/active-course'>Курси</Link>
+            <Link to='/courses-overview'>Наші курси</Link>
           </li>
           <li>
             <Link to='/about'>Про автора</Link>
@@ -108,12 +111,17 @@ const NavBar = () => {
             </li>
           ) : null}
           {username ? (
-            <li>
-              <Link to='/profile'>Профіль</Link>
-            </li>
+            <>
+              <li>
+                <Link to='/profile'>Профіль</Link>
+              </li>
+              <li>
+                <Link to='/active-course'>Активний курс</Link>
+              </li>
+            </>
           ) : null}
           <li>
-            <Link to='/active-course'>Курси</Link>
+            <Link to='/courses-overview'>Наші курси</Link>
           </li>
           <li>
             <Link to='/about'>Про автора</Link>

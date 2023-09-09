@@ -708,6 +708,54 @@ input[type='password']:focus {
   }
 }
 
+/* COURSES OVERVIEW PAGE */
+
+.coursesPageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#courses-list-overview {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  flex-wrap: wrap;
+}
+
+.courseCard {
+  max-width: 400px;
+  min-width: 325px;
+}
+
+.courseCard img:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
+
+@media screen and (max-width: 1220px) {
+  .courseCard {
+    width: 40%;
+    max-width: none;
+    min-width: none;
+  }
+
+  #courses-list-overview {
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .courseCard {
+    width: 90%;
+    max-width: none;
+    min-width: none;
+  }
+
+  #courses-list-overview {
+    justify-content: center;
+  }
+}
+
 /* ANIMATION */
 
 .animation-test {
