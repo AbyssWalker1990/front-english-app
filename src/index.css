@@ -706,6 +706,17 @@ input[type='password']:focus {
   .aboutPageContainer {
     gap: 0;
   }
+
+  #author-photo img {
+    max-width: none;
+    width: 90%;
+  }
+
+  #about-text {
+    padding: 2rem;
+    width: 95%;
+    padding: 0.5rem;
+  }
 }
 
 /* COURSES OVERVIEW PAGE */
