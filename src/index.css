@@ -679,6 +679,35 @@ input[type='password']:focus {
   width: 90%;
 }
 
+/* ABOUT PAGE */
+
+.aboutPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#author-photo {
+  display: flex;
+  justify-content: center;
+}
+
+#author-photo img {
+  display: flex;
+  max-width: 450px;
+}
+
+#about-text {
+  padding: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .aboutPageContainer {
+    gap: 0;
+  }
+}
+
 /* ANIMATION */
 
 .animation-test {

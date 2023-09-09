@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Main from './components/Main'
-import Public from './components/Public'
+import AboutPage from './components/AboutPage'
 import Login from './feature/auth/Login'
 import Register from './feature/auth/Register'
 import ProtectedRoute from './feature/auth/ProtectedRoute'
@@ -29,6 +29,7 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='standard' element={<Standard />} />
+        <Route path='about' element={<AboutPage />} />
 
         <Route element={<PersistLogin />}>
           <Route path='create-profile' element={<CreateProfile />} />
