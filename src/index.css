@@ -40,6 +40,11 @@ button {
   background-color: grey;
 }
 
+.main-button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
 /* || VARIABLES */
 
 :root {
@@ -765,6 +770,67 @@ input[type='password']:focus {
   #courses-list-overview {
     justify-content: center;
   }
+}
+
+/* CONTACTS PAGE */
+
+.contactPageContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#contacts {
+  padding-inline: 5rem;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 3rem;
+}
+
+#socials {
+  display: flex;
+  width: 400px;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+
+.socialItem {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-left: 5rem;
+}
+
+.socialItem img {
+  width: 35px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  gap: 1rem;
+  text-align: left;
+}
+
+@media screen and (max-width: 1000px) {
+  #contacts {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  #socials {
+    padding-top: 0;
+  }
+
+  #contact-form {
+    width: 90vw;
+  }
+
+  /* #contacts-area {
+    max-width: 400px;
+  } */
 }
 
 /* ANIMATION */

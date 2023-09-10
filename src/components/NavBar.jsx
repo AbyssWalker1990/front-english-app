@@ -98,7 +98,7 @@ const NavBar = () => {
             <Link to='/active-course'>Наші партнери</Link>
           </li>
           <li>
-            <Link to='/active-course'>Контакти</Link>
+            <Link to='/contacts'>Контакти</Link>
           </li>
         </ul>
       </nav>
@@ -133,10 +133,7 @@ const NavBar = () => {
             <Link to='/active-course'>Наші партнери</Link>
           </li>
           <li>
-            <Link to='/active-course'>Контакти</Link>
-          </li>
-          <li>
-            <Link to='/register'>Register</Link>
+            <Link to='/contacts'>Контакти</Link>
           </li>
         </ul>
       </nav>
