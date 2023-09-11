@@ -5,11 +5,11 @@ const ContactPage = () => {
         <article id='socials'>
           <div className='socialItem'>
             <img src='img/icons/tel.png' alt='telephone icon' />
-            <p>Телефон</p>
+            <p>050 5782 792</p>
           </div>
           <div className='socialItem'>
             <img src='img/icons/e-mail.png' alt='e-mail icon' />
-            <p>Електонна пошта</p>
+            <p>ews_support@gmail.com</p>
           </div>
           <div className='socialItem'>
             <img src='img/icons/instagram.png' alt='instagram icon' />

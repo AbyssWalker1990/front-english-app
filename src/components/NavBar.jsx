@@ -92,10 +92,10 @@ const NavBar = () => {
             <Link to='/about'>Про автора</Link>
           </li>
           <li>
-            <Link to='/active-course'>Відгуки</Link>
+            <Link to='/response'>Відгуки</Link>
           </li>
           <li>
-            <Link to='/active-course'>Наші партнери</Link>
+            <Link to='/partners'>Наші партнери</Link>
           </li>
           <li>
             <Link to='/contacts'>Контакти</Link>
@@ -127,10 +127,10 @@ const NavBar = () => {
             <Link to='/about'>Про автора</Link>
           </li>
           <li>
-            <Link to='/active-course'>Відгуки</Link>
+            <Link to='/response'>Відгуки</Link>
           </li>
           <li>
-            <Link to='/active-course'>Наші партнери</Link>
+            <Link to='/partners'>Наші партнери</Link>
           </li>
           <li>
             <Link to='/contacts'>Контакти</Link>

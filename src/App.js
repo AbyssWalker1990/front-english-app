@@ -7,8 +7,11 @@ import Login from './feature/auth/Login'
 import Register from './feature/auth/Register'
 import ProtectedRoute from './feature/auth/ProtectedRoute'
 import AdminPage from './feature/admin/AdminPage'
+import ResponsePage from './components/ResponsePage'
+import PartnerPage from './components/PartnerPage'
 import CourseList from './feature/courses/CourseList'
 import ContactPage from './components/ContactPage'
+import OfertaPage from './components/OfertaPage'
 import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
 import CreateProfile from './feature/profile/CreateProfile'
@@ -34,6 +37,9 @@ function App() {
         <Route path='about' element={<AboutPage />} />
         <Route path='courses-overview' element={<CoursesPage />} />
         <Route path='contacts' element={<ContactPage />} />
+        <Route path='response' element={<ResponsePage />} />
+        <Route path='partners' element={<PartnerPage />} />
+        <Route path='oferta' element={<OfertaPage />} />
 
         <Route element={<PersistLogin />}>
           <Route path='create-profile' element={<CreateProfile />} />
