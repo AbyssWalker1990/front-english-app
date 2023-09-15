@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import Main from './components/Main'
 import AboutPage from './components/AboutPage'
 import CoursesPage from './components/CoursesPage'
+import PoliticsPage from './components/PoliticsPage'
 import Login from './feature/auth/Login'
 import Register from './feature/auth/Register'
 import ProtectedRoute from './feature/auth/ProtectedRoute'
@@ -40,6 +41,7 @@ function App() {
         <Route path='response' element={<ResponsePage />} />
         <Route path='partners' element={<PartnerPage />} />
         <Route path='oferta' element={<OfertaPage />} />
+        <Route path='policy' element={<PoliticsPage />} />
 
         <Route element={<PersistLogin />}>
           <Route path='create-profile' element={<CreateProfile />} />

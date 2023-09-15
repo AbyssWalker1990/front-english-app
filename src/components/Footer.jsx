@@ -5,8 +5,16 @@ const Footer = () => {
 
   return (
     <footer>
+      <img
+        className='footerVisaMastercard'
+        src='./img/visa-and-mastercard-logos.png'
+        alt='visa and mastercard logo'
+      />
       <Link className='oferta' to='/oferta'>
         Публічна оферта
+      </Link>
+      <Link className='oferta' to='/policy'>
+        Політика конфіденційності
       </Link>
       <p>© {year} English With Success, Ltd. All rights reserved.</p>
     </footer>

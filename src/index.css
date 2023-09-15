@@ -54,7 +54,7 @@ button {
   --FS: clamp(1rem, 2.2vh, 1.5rem);
 
   /* COLORS */
-  --BGCOLOR: #e9ded2;
+  --BGCOLOR: #fadcbd;
   --BUTTON-COLOR: #57669e;
   --HEADER-COLOR: #3c4878;
   --FOOTER-COLOR: #272f4b;
@@ -333,6 +333,7 @@ header.nav-header {
 }
 
 footer {
+  position: relative;
   background-color: var(--FOOTER-COLOR);
   font-size: 1rem;
   min-height: 5rem;
@@ -356,6 +357,13 @@ footer a.oferta {
 
 footer a.oferta:hover {
   opacity: 0.8;
+}
+
+.footerVisaMastercard {
+  width: 100px;
+  position: absolute;
+  top: 20%;
+  left: 3%;
 }
 
 /* NAVBAR */
