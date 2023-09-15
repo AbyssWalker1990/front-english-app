@@ -366,6 +366,13 @@ footer a.oferta:hover {
   left: 3%;
 }
 
+@media screen and (max-width: 1000px) {
+  .footerVisaMastercard {
+    top: 10%;
+    width: 70px;
+  }
+}
+
 /* NAVBAR */
 .log-section {
   display: flex;
