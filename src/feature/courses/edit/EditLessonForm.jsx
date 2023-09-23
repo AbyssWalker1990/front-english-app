@@ -1,7 +1,8 @@
 import EditExercisesBlockForm from './EditExercisesBlockForm'
 import { SaveButton } from './buttons/SaveButton'
-import { useGetCoursesQuery } from '../courseApiSlice'
+import { useGetCoursesQuery, useUpdateCardsMutation } from '../courseApiSlice'
 import newExerciseBlock from '../data/newExerciseBlock'
+import { useRef } from 'react'
 
 const EditLessonForm = ({
   lesson,
@@ -12,6 +13,10 @@ const EditLessonForm = ({
 }) => {
   const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } =
     lesson
+
+  const cardsRef = useRef('')
+
+  const [updateCards] = useUpdateCardsMutation()
 
   const onChangeLessonHeaders = async (e) => {
     const splittedId = e.target.id.split('-')
@@ -74,6 +79,21 @@ const EditLessonForm = ({
     />
   ))
 
+  const handleUpdateCards = async () => {
+    console.log('Upd Cards')
+    console.log('curCourse._id: ', curCourse._id)
+    console.log('lesson.lessonPosition: ', lesson.lessonPosition)
+    const lessonPos = lesson.lessonPosition
+    const cards = cardsRef.current.value
+    console.log('cards: ', cards)
+    const body = {
+      courseId: curCourse._id,
+      lessonPos,
+      cards,
+    }
+    await updateCards(body)
+  }
+
   const lessonContent = (
     <>
       <div className='lesson-edit-form'>
@@ -117,6 +137,13 @@ const EditLessonForm = ({
               Delete Exercise Block
             </button>
           </div>
+          <article>
+            <label htmlFor='cards'>Картки - словник: </label>
+            <textarea ref={cardsRef} onChange={console.log(1)} id='cards' />
+            <button className='main-button' onClick={handleUpdateCards}>
+              Оновити картки
+            </button>
+          </article>
         </div>
       </div>
     </>

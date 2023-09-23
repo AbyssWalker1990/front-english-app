@@ -866,6 +866,33 @@ input[type='password']:focus {
   justify-content: space-between;
 }
 
+/* DICTIONARY CARD PAGE */
+
+#cards {
+  display: flex;
+  padding: 2.5rem;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.wordCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 167px;
+  background-color: #00bfff;
+  background: url('/public/img/card.png');
+  border: 1px solid black;
+}
+
+.wordCard p:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
 /* ANIMATION */
 
 .animation-test {

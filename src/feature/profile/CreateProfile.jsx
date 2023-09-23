@@ -28,7 +28,7 @@ function CreateProfile() {
   const navigate = useNavigate()
 
   const [image, setImage] = useState()
-  const [course, setCourse] = useState('Course 1')
+  const [course, setCourse] = useState('Безкоштовний пробний урок')
   const [objectives, setObjectives] = useState()
   const [priorities, setPriorities] = useState()
   const [hobbies, setHobbies] = useState()
