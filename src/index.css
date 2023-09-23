@@ -859,6 +859,13 @@ input[type='password']:focus {
   } */
 }
 
+/* EDIT COURSE PAGE */
+
+.createDeleteBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* ANIMATION */
 
 .animation-test {

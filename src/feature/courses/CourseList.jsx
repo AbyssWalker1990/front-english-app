@@ -1,6 +1,6 @@
-import { useGetCoursesQuery } from "./courseApiSlice"
-import CoursePromo from "./CoursePromo"
-import { useAddNewCourseMutation } from "./courseApiSlice"
+import { useGetCoursesQuery } from './courseApiSlice'
+import CoursePromo from './CoursePromo'
+import { useAddNewCourseMutation } from './courseApiSlice'
 
 const CourseList = () => {
   const {
@@ -9,9 +9,8 @@ const CourseList = () => {
     isSuccess,
     isError,
     refetch,
-    error
+    error,
   } = useGetCoursesQuery()
-
 
   const [addNewCourse] = useAddNewCourseMutation()
 
@@ -28,15 +27,16 @@ const CourseList = () => {
   if (isLoading) content = <p>Loading ...</p>
 
   if (isError) {
-    content = <p className="errmsg">{error?.data?.message}</p>
+    content = <p className='errmsg'>{error?.data?.message}</p>
   }
 
   if (isSuccess) {
-
     const { ids } = courses
 
     const coursesContent = ids?.length
-      ? ids.map(courseId => <CoursePromo key={courseId} id={courseId} refetch={refetch} />)
+      ? ids.map((courseId) => (
+          <CoursePromo key={courseId} id={courseId} refetch={refetch} />
+        ))
       : null
 
     content = (
@@ -46,19 +46,16 @@ const CourseList = () => {
         </header>
         <hr />
         <br />
-        <ul className="course-list">
-          {coursesContent}
-        </ul>
+        <ul className='course-list'>{coursesContent}</ul>
         <br />
         <hr />
         <br />
-        <button onClick={onCreateCourseHandle}>
+        <button className='main-button' onClick={onCreateCourseHandle}>
           CREATE COURSE
         </button>
       </section>
     )
     console.log(content)
-
   }
 
   return content

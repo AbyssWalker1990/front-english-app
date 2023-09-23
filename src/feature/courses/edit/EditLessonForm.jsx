@@ -1,16 +1,23 @@
-import EditExercisesBlockForm from "./EditExercisesBlockForm"
-import { SaveButton } from "./buttons/SaveButton"
+import EditExercisesBlockForm from './EditExercisesBlockForm'
+import { SaveButton } from './buttons/SaveButton'
 import { useGetCoursesQuery } from '../courseApiSlice'
-import newExerciseBlock from "../data/newExerciseBlock"
+import newExerciseBlock from '../data/newExerciseBlock'
 
-const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch }) => {
-  const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } = lesson
+const EditLessonForm = ({
+  lesson,
+  setCurCourse,
+  curCourse,
+  updateCourse,
+  refetch,
+}) => {
+  const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } =
+    lesson
 
   const onChangeLessonHeaders = async (e) => {
     const splittedId = e.target.id.split('-')
-    const curLessonPosition = (Number(splittedId[splittedId.length - 2]) - 1)
+    const curLessonPosition = Number(splittedId[splittedId.length - 2]) - 1
     const key = splittedId[splittedId.length - 1]
-    setCurCourse(prevState => {
+    setCurCourse((prevState) => {
       const duplicate = JSON.parse(JSON.stringify(prevState))
       duplicate.lessons[curLessonPosition][key] = e.target.value
       return duplicate
@@ -33,7 +40,8 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch
 
   const handleDeleteExerciseBlock = async () => {
     const indexLesson = lessonPosition - 1
-    const indexForDelete = curCourse.lessons[indexLesson].exercisesBlocks.length - 1
+    const indexForDelete =
+      curCourse.lessons[indexLesson].exercisesBlocks.length - 1
     const duplicate = JSON.parse(JSON.stringify(curCourse))
     duplicate.lessons[indexLesson].exercisesBlocks.splice(indexForDelete, 1)
     console.log('Block Deleted')
@@ -44,7 +52,8 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch
   const handleCreateExerciseBlock = async () => {
     const indexLesson = lessonPosition - 1
     const duplicate = JSON.parse(JSON.stringify(curCourse))
-    const newBlockPosition = curCourse.lessons[indexLesson].exercisesBlocks.length + 1
+    const newBlockPosition =
+      curCourse.lessons[indexLesson].exercisesBlocks.length + 1
     const oldBlocks = curCourse.lessons[indexLesson].exercisesBlocks
     const newBlock = { ...newExerciseBlock, blockPosition: newBlockPosition }
     const formattedBlocks = [...oldBlocks, newBlock]
@@ -54,7 +63,7 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch
     refetch()
   }
 
-  const exerciseBlockContent = exercisesBlocks.map(block => (
+  const exerciseBlockContent = exercisesBlocks.map((block) => (
     <EditExercisesBlockForm
       key={block._id}
       exercisesBlock={block}
@@ -67,42 +76,59 @@ const EditLessonForm = ({ lesson, setCurCourse, curCourse, updateCourse, refetch
 
   const lessonContent = (
     <>
-      <div className="lesson-edit-form">
-        <h1>{lessonPosition}. Title: {lessonTitle}</h1>
-        <input type="text"
+      <div className='lesson-edit-form'>
+        <h1>
+          {lessonPosition}. Title: {lessonTitle}
+        </h1>
+        <input
+          type='text'
           id={`lesson-${lesson._id}-${lessonPosition}-lessonTitle`}
           onChange={onChangeLessonHeaders}
           defaultValue={lessonTitle}
         />
-        <button id={`more-button-${lesson._id}`} onClick={handleMoreButtonClick}>More...</button>
+        <button
+          className='main-button'
+          id={`more-button-${lesson._id}`}
+          onClick={handleMoreButtonClick}
+        >
+          More...
+        </button>
       </div>
       <div id={`homework-${lesson._id}`} className='hidden'>
-        <div className="lesson-edit-form">
+        <div className='lesson-edit-form'>
           <h1>Description: </h1>
           <textarea
             id={`lesson-${lesson._id}-${lessonPosition}-lessonDescription`}
-            rows="4"
-            cols="50"
+            rows='4'
+            cols='50'
             onChange={onChangeLessonHeaders}
             defaultValue={lessonDescription}
           />
           <SaveButton curCourse={curCourse} updateCourse={updateCourse} />
         </div>
-        <div className="lesson-edit-form border padding-all">
+        <div className='lesson-edit-form border padding-all'>
           <h1>HomeWork: </h1>
           {exerciseBlockContent}
-          <button onClick={handleDeleteExerciseBlock}>Delete Exercise Block</button>
-          <button onClick={handleCreateExerciseBlock}>Add Exercise Block</button>
+          <div className='createDeleteBlock'>
+            <button className='main-button' onClick={handleCreateExerciseBlock}>
+              Add Exercise Block
+            </button>
+            <button className='main-button' onClick={handleDeleteExerciseBlock}>
+              Delete Exercise Block
+            </button>
+          </div>
         </div>
       </div>
     </>
   )
 
   return (
-    <div id={`lesson-${lessonPosition}`} className="border vert-margin padding-all border-red">
+    <div
+      id={`lesson-${lessonPosition}`}
+      className='border vert-margin padding-all border-red'
+    >
       {lessonContent}
     </div>
-
   )
 }
 

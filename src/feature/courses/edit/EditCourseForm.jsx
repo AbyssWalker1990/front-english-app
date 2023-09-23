@@ -5,7 +5,6 @@ import { SaveButton } from './buttons/SaveButton'
 import newLesson from '../data/newLesson'
 
 const EditCourseForm = ({ course }) => {
-
   const [curCourse, setCurCourse] = useState('')
 
   const {
@@ -14,7 +13,7 @@ const EditCourseForm = ({ course }) => {
     isSuccess,
     isError,
     refetch,
-    error
+    error,
   } = useGetCoursesQuery()
 
   const [updateCourse] = useUpdateCourseMutation()
@@ -39,9 +38,9 @@ const EditCourseForm = ({ course }) => {
       const splittedId = e.target.id.split('-')
       const key = splittedId[splittedId.length - 1]
       console.log('key: ', key)
-      setCurCourse(prevState => ({
+      setCurCourse((prevState) => ({
         ...prevState,
-        [key]: e.target.value
+        [key]: e.target.value,
       }))
     }
 
@@ -63,8 +62,7 @@ const EditCourseForm = ({ course }) => {
       refetch()
     }
 
-
-    const lessonsContent = lessons.map(lesson => (
+    const lessonsContent = lessons.map((lesson) => (
       <EditLessonForm
         key={lesson._id}
         lesson={lesson}
@@ -79,19 +77,19 @@ const EditCourseForm = ({ course }) => {
       <section>
         <header>
           <article>
-            <label htmlFor="course-title">Title: </label>
+            <label htmlFor='course-title'>Title: </label>
             <input
-              type="text"
-              id="course-title"
+              type='text'
+              id='course-title'
               onChange={onChangeCourseHeaders}
               defaultValue={title}
             />
           </article>
           <article>
-            <label htmlFor="course-description">Description: </label>
+            <label htmlFor='course-description'>Description: </label>
             <textarea
               onChange={onChangeCourseHeaders}
-              id="course-description"
+              id='course-description'
               defaultValue={description}
             />
           </article>
@@ -100,24 +98,24 @@ const EditCourseForm = ({ course }) => {
         <br />
         <hr />
         <br />
-        <article id="course-lessons">
+        <article id='course-lessons'>
           <h1>Lessons List: </h1>
           <br />
           {lessonsContent}
-          <div id="lesson-buttons">
-            <button onClick={handleCreateLessonButton}>CREATE LESSON</button>
-            <button onClick={handleDeleteLessonButton}>DELETE LESSON</button>
+          <div id='lesson-buttons' className='createDeleteBlock'>
+            <button className='main-button' onClick={handleCreateLessonButton}>
+              CREATE LESSON
+            </button>
+            <button className='main-button' onClick={handleDeleteLessonButton}>
+              DELETE LESSON
+            </button>
           </div>
         </article>
       </section>
     )
   } else {
-    return (
-      <p>Loading...</p>
-    )
+    return <p>Loading...</p>
   }
-
-
 }
 
 export default EditCourseForm
