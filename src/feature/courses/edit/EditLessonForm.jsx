@@ -11,8 +11,17 @@ const EditLessonForm = ({
   updateCourse,
   refetch,
 }) => {
-  const { lessonTitle, lessonPosition, lessonDescription, exercisesBlocks } =
-    lesson
+  const {
+    lessonTitle,
+    lessonPosition,
+    lessonDescription,
+    exercisesBlocks,
+    wordCards,
+  } = lesson
+
+  const dictWords = wordCards.reduce((acc, cur) => {
+    return (acc += cur.english + ' : ' + cur.ukrainian + '; ')
+  }, '')
 
   const cardsRef = useRef('')
 
@@ -140,6 +149,9 @@ const EditLessonForm = ({
           <article>
             <label htmlFor='cards'>Картки - словник: </label>
             <textarea ref={cardsRef} onChange={console.log(1)} id='cards' />
+            <br />
+            <p>Поточні слова: {dictWords}</p>
+            <br />
             <button className='main-button' onClick={handleUpdateCards}>
               Оновити картки
             </button>
