@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../feature/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
 
@@ -7,8 +7,24 @@ const NavBar = () => {
     useSendLogoutMutation()
 
   const { username, roles, isAdmin } = useAuth()
-  console.log('isAdmin: ', isAdmin)
   const userRoles = roles ?? []
+
+  const usePathname = () => {
+    const location = useLocation()
+    return location.pathname
+  }
+
+  const location = usePathname()
+  const isProfilePage = () => {
+    if (location.split('/').includes('profile')) {
+      return true
+    }
+  }
+
+  const isCurrentProfilePage = isProfilePage()
+
+  console.log('from navbar')
+
   console.log(userRoles)
   let userInfo
   username
@@ -49,6 +65,65 @@ const NavBar = () => {
     </div>
   )
 
+  const ulList = (
+    <>
+      <ul>
+        {isCurrentProfilePage === true ? (
+          <>
+            <li>
+              <Link to='/profile'>Профіль</Link>
+            </li>
+            <li>
+              <Link to='/profile'>Статистика</Link>
+            </li>
+            <li>
+              <Link to='/profile'>Карта</Link>
+            </li>
+            <li>
+              <Link to='/profile'>Словник</Link>
+            </li>
+            <li>
+              <Link to='/profile'>Досягнення</Link>
+            </li>
+          </>
+        ) : (
+          <>
+            {userRoles.includes('Admin') ? (
+              <li>
+                <Link to='/adminpage'>Admin Page</Link>
+              </li>
+            ) : null}
+            {username ? (
+              <>
+                <li>
+                  <Link to='/profile'>Профіль</Link>
+                </li>
+                <li>
+                  <Link to='/active-course'>Активний курс</Link>
+                </li>
+              </>
+            ) : null}
+            <li>
+              <Link to='/courses-overview'>Наші курси</Link>
+            </li>
+            <li>
+              <Link to='/about'>Про автора</Link>
+            </li>
+            <li>
+              <Link to='/response'>Відгуки</Link>
+            </li>
+            <li>
+              <Link to='/partners'>Наші партнери</Link>
+            </li>
+            <li>
+              <Link to='/contacts'>Контакти</Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </>
+  )
+
   return (
     <header className='nav-header'>
       <div className='logo'>
@@ -57,89 +132,10 @@ const NavBar = () => {
         </Link>
       </div>
 
-      <nav className='hamburger'>
-        {hamburgerLogSection}
-        <ul>
-          {userRoles.includes('Admin') ? (
-            <li>
-              <Link to='/adminpage'>Admin Page</Link>
-            </li>
-          ) : null}
-          {username ? (
-            <>
-              <li>
-                <Link className='nav-button-link' onClick={sendLogout} to='/'>
-                  Вийти
-                </Link>
-              </li>
-              <li>
-                <Link className='nav-button-link' onClick={sendLogout} to='/'>
-                  Профіль
-                </Link>
-              </li>
-              <li>
-                <Link to='/active-course'>Активний курс</Link>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Link className='nav-button-link' to='/login'>
-                Увійти
-              </Link>
-            </li>
-          )}
-          <li>
-            <Link to='/courses-overview'>Наші курси</Link>
-          </li>
-          <li>
-            <Link to='/about'>Про автора</Link>
-          </li>
-          <li>
-            <Link to='/response'>Відгуки</Link>
-          </li>
-          <li>
-            <Link to='/partners'>Наші партнери</Link>
-          </li>
-          <li>
-            <Link to='/contacts'>Контакти</Link>
-          </li>
-        </ul>
-      </nav>
+      <nav className='hamburger'>{ulList}</nav>
 
-      <nav className='main'>
-        <ul>
-          {userRoles.includes('Admin') ? (
-            <li>
-              <Link to='/adminpage'>Admin Page</Link>
-            </li>
-          ) : null}
-          {username ? (
-            <>
-              <li>
-                <Link to='/profile'>Профіль</Link>
-              </li>
-              <li>
-                <Link to='/active-course'>Активний курс</Link>
-              </li>
-            </>
-          ) : null}
-          <li>
-            <Link to='/courses-overview'>Наші курси</Link>
-          </li>
-          <li>
-            <Link to='/about'>Про автора</Link>
-          </li>
-          <li>
-            <Link to='/response'>Відгуки</Link>
-          </li>
-          <li>
-            <Link to='/partners'>Наші партнери</Link>
-          </li>
-          <li>
-            <Link to='/contacts'>Контакти</Link>
-          </li>
-        </ul>
-      </nav>
+      <nav className='main'>{ulList}</nav>
+
       {logSection}
       <button className='menu-button'>
         <div className='menu-icon'></div>
