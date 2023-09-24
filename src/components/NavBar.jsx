@@ -15,6 +15,9 @@ const NavBar = () => {
     ? (userInfo = <Link to='/profile'>{username}</Link>)
     : (userInfo = 'Guest')
 
+  const imageBasePath =
+    window.location.protocol + '//' + window.location.host + '/img'
+
   const logSection = (
     <>
       <div className='log-section'>
@@ -50,7 +53,7 @@ const NavBar = () => {
     <header className='nav-header'>
       <div className='logo'>
         <Link to='/'>
-          <img src='img/logo-sm.png' alt='logo' />
+          <img src={`${imageBasePath}/logo-sm.png`} alt='logo' />
         </Link>
       </div>
 

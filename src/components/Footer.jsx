@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   const year = new Date().getFullYear()
 
+  const imageBasePath =
+    window.location.protocol + '//' + window.location.host + '/img'
+
   return (
     <footer>
       <img
         className='footerVisaMastercard'
-        src='./img/visa-and-mastercard-logos.png'
+        src={`${imageBasePath}/visa-and-mastercard-logos.png`}
         alt='visa and mastercard logo'
       />
       <Link className='oferta' to='/oferta'>

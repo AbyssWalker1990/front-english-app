@@ -9,9 +9,12 @@ const SingleWordCard = ({ card }) => {
   const revealTranslation = () => {
     engRef.current.className = 'hidden'
     ukrRef.current.className = ''
+
     setTimeout(() => {
-      engRef.current.className = ''
-      ukrRef.current.className = 'hidden'
+      if (engRef.current != null && ukrRef.current != null) {
+        engRef.current.className = ''
+        ukrRef.current.className = 'hidden'
+      }
     }, 5000)
   }
 
