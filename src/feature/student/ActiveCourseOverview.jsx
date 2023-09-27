@@ -75,16 +75,12 @@ const ActiveCourseOverview = () => {
               ) : (
                 ''
               )}
-              {results ? (
-                <Link
-                  to={`../lesson-cards/${courseId}/${lesson.lessonPosition}`}
-                  relative='path'
-                >
-                  &nbsp;&nbsp;&nbsp; Слова
-                </Link>
-              ) : (
-                ''
-              )}
+              <Link
+                to={`../lesson-cards/${courseId}/${lesson.lessonPosition}`}
+                relative='path'
+              >
+                &nbsp;&nbsp;&nbsp; Слова
+              </Link>
             </li>
           </>
         )
