@@ -77,7 +77,7 @@ const NavBar = () => {
               <Link to='/profile'>Статистика</Link>
             </li>
             <li>
-              <Link to='/profile'>Карта</Link>
+              <Link to='/profile-map'>Карта</Link>
             </li>
             <li>
               <Link to='/profile'>Словник</Link>
