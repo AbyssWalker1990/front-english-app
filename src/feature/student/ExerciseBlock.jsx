@@ -1,9 +1,9 @@
-import ExerciseList from "./ExerciseList"
-import { useState, useEffect } from "react"
-import { useSetBlockAnswersMutation } from "../profile/profileApiSlice"
+import ExerciseList from './ExerciseList'
+import { useState, useEffect } from 'react'
+import { useSetBlockAnswersMutation } from '../profile/profileApiSlice'
+import { toast } from 'react-toastify'
 
 const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
-
   const [answers, setAnswers] = useState([])
   const [isComplete, setIsComplete] = useState(false)
   let curBlockStudentsAnswers
@@ -11,9 +11,12 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
   const [setBlockAnswers] = useSetBlockAnswersMutation()
   // console.log('damaged: ', studentAnswers.lessons[curLesson.lessonPosition - 1].exercisesBlocks[block.blockPosition - 1].blockExercises)
   try {
-    curBlockStudentsAnswers = studentAnswers.lessons[curLesson.lessonPosition - 1].exercisesBlocks[block.blockPosition - 1].blockExercises
+    curBlockStudentsAnswers =
+      studentAnswers.lessons[curLesson.lessonPosition - 1].exercisesBlocks[
+        block.blockPosition - 1
+      ].blockExercises
   } catch (error) {
-    curBlockStudentsAnswers = [{ exercisePos: 1, studentsAnswer: '', }]
+    curBlockStudentsAnswers = [{ exercisePos: 1, studentsAnswer: '' }]
   }
 
   // useEffect(() => {
@@ -34,7 +37,7 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
 
   useEffect(() => {
     if (answers.length > 0) {
-      if (answers.every(answer => answer.studentsAnswer?.length > 0)) {
+      if (answers.every((answer) => answer.studentsAnswer?.length > 0)) {
         setIsComplete(true)
       }
     }
@@ -43,11 +46,13 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
   useEffect(() => {
     let exercises
     if (curLesson) {
-      const currentBlock = curLesson.exercisesBlocks.find(curBlock => curBlock.blockPosition === block.blockPosition)
-      exercises = currentBlock.blockExercises.map(exercise => {
+      const currentBlock = curLesson.exercisesBlocks.find(
+        (curBlock) => curBlock.blockPosition === block.blockPosition
+      )
+      exercises = currentBlock.blockExercises.map((exercise) => {
         return {
           exercisePos: exercise.exercisePos,
-          studentsAnswer: ''
+          studentsAnswer: '',
         }
       })
       setAnswers(exercises)
@@ -56,9 +61,9 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
     const inputBlock = document.getElementById(`block-${block.blockPosition}`)
     // console.log('inputBlock: ', inputBlock)
     if (inputBlock === null) {
-      console.error("The inputBlock variable is null.");
+      console.error('The inputBlock variable is null.')
     } else {
-      const inputElements = inputBlock.querySelectorAll("input");
+      const inputElements = inputBlock.querySelectorAll('input')
       // console.log('inputElements: ', inputElements)
       curBlockStudentsAnswers.forEach((answer, index) => {
         // console.log('curBlockStudentsAnswers: ', curBlockStudentsAnswers)
@@ -67,16 +72,18 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
         inputElements[index].value = answer.studentsAnswer ?? ''
       })
       let isAllInputsDone = true
-      inputElements.forEach(element => {
+      inputElements.forEach((element) => {
         if (element.value.length < 1) isAllInputsDone = false
       })
       setIsComplete(isAllInputsDone)
-      const updatedExercises = curBlockStudentsAnswers.map((exercise, index) => {
-        return {
-          exercisePos: index + 1,
-          studentsAnswer: exercise.studentsAnswer
+      const updatedExercises = curBlockStudentsAnswers.map(
+        (exercise, index) => {
+          return {
+            exercisePos: index + 1,
+            studentsAnswer: exercise.studentsAnswer,
+          }
         }
-      })
+      )
       console.log('updatedExercises: ', updatedExercises)
       console.log('exercises: ', exercises)
       if (updatedExercises.length < exercises.length) {
@@ -93,15 +100,30 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
       courseId,
       lessonPosition: curLesson.lessonPosition,
       blockPosition: block.blockPosition,
-      exerciseAnswers: answers
+      exerciseAnswers: answers,
     }
-    await setBlockAnswers(exerciseBlockData)
+    const result = await setBlockAnswers(exerciseBlockData)
+    console.log('result: ', result)
+    if (result.error) {
+      toast.error(`Error!!`, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+    } else {
+      toast.success(`Answers Updated!!!`, {
+        position: toast.POSITION.TOP_RIGHT,
+      })
+    }
   }
 
   const content = (
-    <article key={`${curLesson._id}-block-${block.blockPosition}`} className="border-green vert-margin">
+    <article
+      key={`${curLesson._id}-block-${block.blockPosition}`}
+      className='border-green vert-margin'
+    >
       <header>
-        <h1>{block.blockPosition}. {block.blockDescription}</h1>
+        <h1>
+          {block.blockPosition}. {block.blockDescription}
+        </h1>
       </header>
       <main id={`block-${block.blockPosition}`}>
         <ExerciseList
@@ -111,13 +133,17 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
           blockPosition={block.blockPosition}
         />
       </main>
-      <button onClick={onClickSaveAnswers} disabled={!isComplete}>Save Answers</button>
+      <button
+        className='main-button'
+        onClick={onClickSaveAnswers}
+        disabled={!isComplete}
+      >
+        Save Answers
+      </button>
     </article>
   )
 
-  return (
-    content
-  )
+  return content
 }
 
 export default ExerciseBlock

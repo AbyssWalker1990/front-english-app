@@ -22,7 +22,7 @@ const ExerciseList = ({ exercises, setAnswers, blockPosition }) => {
         {exercise.exerciseType === 'quiz' ? (
           <div className='exercise-answer-input'>
             {exercise.exerciseQuizAnswers.map((quizAnswer, index) => (
-              <p>
+              <p key={`quiz-answer-${exercise._id}-${index}`}>
                 {index + 1}. {quizAnswer}
               </p>
             ))}
