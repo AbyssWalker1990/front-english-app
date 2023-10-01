@@ -80,6 +80,7 @@ const EditExercisesForm = ({
           defaultValue={answer}
         />
         <button
+          className='save-button'
           id={`answers-${exercise._id}-${exercisePos}`}
           onClick={onAnswerEdit}
         >
