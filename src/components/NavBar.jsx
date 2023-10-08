@@ -74,16 +74,16 @@ const NavBar = () => {
               <Link to='/profile'>Профіль</Link>
             </li>
             <li>
-              <Link to='/profile'>Статистика</Link>
+              <Link to='/profile/achievments'>Статистика</Link>
             </li>
             <li>
-              <Link to='/profile-map'>Карта</Link>
+              <Link to='/profile/map'>Карта</Link>
             </li>
             <li>
               <Link to='/profile'>Словник</Link>
             </li>
             <li>
-              <Link to='/profile'>Досягнення</Link>
+              <Link to='/profile/achievments'>Досягнення</Link>
             </li>
           </>
         ) : (

@@ -17,6 +17,7 @@ import RequireAuth from './feature/auth/RequireAuth'
 import PersistLogin from './feature/auth/PersistLogin'
 import CreateProfile from './feature/profile/CreateProfile'
 import Profile from './feature/profile/Profile'
+import Achievments from './feature/profile/Achievments'
 import LessonPage from './feature/student/LessonPage'
 import LessonCards from './feature/student/LessonCards'
 import LessonResults from './feature/student/results/LessonResults'
@@ -55,7 +56,8 @@ function App() {
               <Route path='purchase' element={<PurchaseFinal />} />
               <Route path='protected' element={<ProtectedRoute />} />
               <Route path='profile' element={<Profile />} />
-              <Route path='profile-map' element={<Map />} />
+              <Route path='profile/map' element={<Map />} />
+              <Route path='profile/achievments' element={<Achievments />} />
               <Route path='active-course' element={<ActiveCourseOverview />} />
               <Route
                 path='active-course/:courseId/:lessonPos'
