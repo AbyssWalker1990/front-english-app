@@ -67,27 +67,12 @@ const Achievments = () => {
           <div id='profile-desc' className='profile padding-all'>
             <h2>Курс: {currentCourseTitle}</h2>
             <br />
-            {profileData.objectives.map((obj, index) => (
-              <p key={`objective-${index}`}>
-                {index + 1}. {obj}
-              </p>
-            ))}
             <br />
             <h2>Пакет:</h2>
             <br />
-            {profileData.priorities.map((pri, index) => (
-              <p key={`priority-${index}`}>
-                {index + 1}. {pri}
-              </p>
-            ))}
             <br />
             <h2>Всього уроків: {currentCourseLessonsCount}</h2>
             <br />
-            {profileData.hobbies.map((hob, index) => (
-              <p key={`hobby-${index}`}>
-                {index + 1}. {hob}
-              </p>
-            ))}
             <br />
             <h2>Пройдено: {successfullyPassedLessons.length}</h2>
             <br />
