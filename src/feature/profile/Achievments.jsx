@@ -31,26 +31,16 @@ const Achievments = () => {
         break
       }
     }
-    console.log('currentCourseId: ', currentCourseId)
 
     const currentCourseEntity = courses.entities[currentCourseId]
     const currentCourseLessonsCount = currentCourseEntity.lessons.length
-    console.log('currentCourseLessonsCount: ', currentCourseLessonsCount)
-
     const results = profileData.coursesAnswers[0].courseResults
-    console.log('results: ', results)
-
     const successfullyPassedLessons = results.filter(
       (result) => result.lessonResultPercent >= 80
     )
-    console.log('successfullyPassedLessons: ', successfullyPassedLessons)
 
     const successfullyPassedLessonsPercent =
-      (successfullyPassedLessons.length / results.length) * 100
-    console.log(
-      'successfullyPassedLessonsPercent: ',
-      successfullyPassedLessonsPercent
-    )
+      (successfullyPassedLessons.length / currentCourseLessonsCount) * 100
 
     content = (
       <>
