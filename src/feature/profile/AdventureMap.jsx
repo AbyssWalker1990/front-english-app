@@ -1,12 +1,9 @@
 import React from 'react'
 import { useGetProfileQuery } from './profileApiSlice'
-import { useGetCoursesQuery } from '../courses/courseApiSlice'
 
 const AdventureMap = () => {
   const { data: profileData, isSuccess: isProfileSuccess } =
     useGetProfileQuery()
-
-  const { data: courses, isSuccess: isCoursesSuccess } = useGetCoursesQuery()
 
   const positions = new Map([
     [0, { top: '76%', left: '4.5%' }],
@@ -30,34 +27,60 @@ const AdventureMap = () => {
 
   let content
 
-  if (isProfileSuccess && isCoursesSuccess) {
-    const currentCourseTitle = profileData.activeCourse
-    console.log('currentCourseTitle: ', currentCourseTitle)
-
-    const allCoursesIds = Array.from(Object.keys(courses.entities))
-    let currentCourseId
-    for (const courseId of allCoursesIds) {
-      if (courses.entities[courseId].title === currentCourseTitle) {
-        currentCourseId = courses.entities[courseId]._id
-        break
-      }
-    }
-
+  if (isProfileSuccess) {
     const results = profileData.coursesAnswers[0].courseResults
     const successfullyPassedLessons = results.filter(
       (result) => result.lessonResultPercent >= 80
     )
+    const gender = profileData.gender ?? 'male'
+
+    let level
+    switch (successfullyPassedLessons.length) {
+      case 0:
+      case 1:
+        level = '1'
+        break
+      case 2:
+      case 3:
+      case 4:
+        level = '2'
+        break
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+        level = '3'
+        break
+      case 10:
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+        level = '4'
+        break
+      case 15:
+      case 16:
+        level = '5'
+        break
+      default:
+        level = '1'
+        break
+    }
+
+    const characterURL = `../img/characters/${gender}_level${level}.png`
+
     content = (
       <section id='map-section'>
         <article id='map'>
           <img src='../img/map_female.jpg' alt='map' />
           <img
+            src={characterURL}
             style={{
               top: positions.get(successfullyPassedLessons.length).top,
               left: positions.get(successfullyPassedLessons.length).left,
             }}
             className='character'
-            src='../img/characters/female_level1.png'
             alt='character'
           />
         </article>
