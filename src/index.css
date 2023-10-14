@@ -942,6 +942,27 @@ input[type='password']:focus {
   padding-left: 1rem;
 }
 
+/* MAP PAGE */
+
+#map-section {
+  display: flex;
+  justify-content: center;
+}
+
+#map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  position: relative;
+}
+
+img.character {
+  width: 2.2%;
+  height: auto;
+  position: absolute;
+}
+
 /* ANIMATION */
 
 .animation-test {

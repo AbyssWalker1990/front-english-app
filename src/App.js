@@ -23,7 +23,7 @@ import LessonCards from './feature/student/LessonCards'
 import LessonResults from './feature/student/results/LessonResults'
 import ActiveCourseOverview from './feature/student/ActiveCourseOverview'
 import MemoizedSingleCourseAdmin from './feature/courses/SingleCourseAdmin'
-import Map from './feature/profile/Map'
+import AdventureMap from './feature/profile/AdventureMap'
 import EditCourse from './feature/courses/edit/EditCourse'
 import { ROLES } from './config/roles'
 import Prefetch from './feature/auth/Prefetch'
@@ -56,7 +56,7 @@ function App() {
               <Route path='purchase' element={<PurchaseFinal />} />
               <Route path='protected' element={<ProtectedRoute />} />
               <Route path='profile' element={<Profile />} />
-              <Route path='profile/map' element={<Map />} />
+              <Route path='profile/map' element={<AdventureMap />} />
               <Route path='profile/achievments' element={<Achievments />} />
               <Route path='active-course' element={<ActiveCourseOverview />} />
               <Route
