@@ -32,6 +32,7 @@ function CreateProfile() {
   const [objectives, setObjectives] = useState()
   const [priorities, setPriorities] = useState()
   const [hobbies, setHobbies] = useState()
+  const [gender, setgender] = useState()
 
   useEffect(() => {
     if (isSuccess) navigate('/profile')
@@ -86,7 +87,9 @@ function CreateProfile() {
       objectives,
       priorities,
       hobbies,
+      gender,
     }
+    console.log(profileData)
     await createProfile(profileData)
   }
 
@@ -135,7 +138,20 @@ function CreateProfile() {
               </button>
             </div>
             <br />
-            <br />
+            <div className='form-item'>
+              <label htmlFor='gender'>
+                <span className='nowrap'>Стать:</span>
+              </label>
+              <select
+                id='gender'
+                name='gender'
+                onChange={(e) => setgender(e.target.value)}
+              >
+                <option value=''></option>
+                <option value='male'>Чоловіча</option>
+                <option value='female'>Жіноча</option>
+              </select>
+            </div>
             <div className='form-item'>
               <label htmlFor='objectives'>
                 <span className='nowrap'>Objectives:</span>
