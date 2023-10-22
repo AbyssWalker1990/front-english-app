@@ -29,6 +29,7 @@ import { ROLES } from './config/roles'
 import Prefetch from './feature/auth/Prefetch'
 import Standard from './components/Standard'
 import PurchaseFinal from './components/PurchaseFinal'
+import SuccessPaymentPage from './components/SuccessPaymentPage'
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path='partners' element={<PartnerPage />} />
         <Route path='oferta' element={<OfertaPage />} />
         <Route path='policy' element={<PoliticsPage />} />
+        <Route path='success_payment' element={<SuccessPaymentPage />} />
 
         <Route element={<PersistLogin />}>
           <Route path='create-profile' element={<CreateProfile />} />

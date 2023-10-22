@@ -227,7 +227,12 @@ const CoursesPage = () => {
             <input type='hidden' name='lang' value='uk' />
             <input type='hidden' name='encoding' value='UTF-8' />
             <input type='hidden' name='exp_time' value='400' />
-            <button type='button' onClick={payBasic}>
+            <button
+              type='button'
+              onClick={() =>
+                (window.location.href = 'https://prt.mn/doJnwYAqrs')
+              }
+            >
               <img
                 src='img/courses/course_offer_En_4_Tourism_Basic.jpg'
                 alt='course description'
