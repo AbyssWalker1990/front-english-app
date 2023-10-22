@@ -230,7 +230,7 @@ const CoursesPage = () => {
             <button
               type='button'
               onClick={() =>
-                (window.location.href = 'https://prt.mn/doJnwYAqrs')
+                (window.location.href = 'https://prt.mn/XOcVfepYAj')
               }
             >
               <img
