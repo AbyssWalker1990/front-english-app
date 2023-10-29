@@ -19,22 +19,6 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
     curBlockStudentsAnswers = [{ exercisePos: 1, studentsAnswer: '' }]
   }
 
-  // useEffect(() => {
-  //   let exercises
-  //   if (curLesson) {
-  //     const currentBlock = curLesson.exercisesBlocks.find(curBlock => curBlock.blockPosition === block.blockPosition)
-  //     console.log('currentBlock: ', currentBlock)
-  //     console.log('block.blockPosition: ', block.blockPosition)
-  //     exercises = currentBlock.blockExercises.map(exercise => {
-  //       return {
-  //         exercisePos: exercise.exercisePos,
-  //         studentsAnswer: ''
-  //       }
-  //     })
-  //     setAnswers(exercises)
-  //   }
-  // }, [block])
-
   useEffect(() => {
     if (answers.length > 0) {
       if (answers.every((answer) => answer.studentsAnswer?.length > 0)) {
@@ -118,14 +102,17 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
   const content = (
     <article
       key={`${curLesson._id}-block-${block.blockPosition}`}
-      className='border-green vert-margin'
+      className='studentExerciseBlock vert-margin'
     >
       <header>
         <h1>
           {block.blockPosition}. {block.blockDescription}
         </h1>
       </header>
-      <main id={`block-${block.blockPosition}`}>
+      <main
+        id={`block-${block.blockPosition}`}
+        className='studentExerciseBlockContent'
+      >
         <ExerciseList
           key={block.blockExercises._id}
           exercises={block.blockExercises}
@@ -134,7 +121,7 @@ const ExerciseBlock = ({ curLesson, block, courseId, studentAnswers }) => {
         />
       </main>
       <button
-        className='main-button'
+        className='main-button studentSveAnswersButton'
         onClick={onClickSaveAnswers}
         disabled={!isComplete}
       >

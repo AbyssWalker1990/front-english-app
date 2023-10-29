@@ -12,10 +12,7 @@ const ExerciseList = ({ exercises, setAnswers, blockPosition }) => {
 
   if (exercises) {
     content = exercises.map((exercise) => (
-      <div
-        key={exercise._id}
-        className='exercise-content-student border vert-margin padding-all'
-      >
+      <div key={exercise._id} className='exercise-content-student'>
         <p>
           {exercise.exercisePos}. {exercise.exerciseDescription}
         </p>

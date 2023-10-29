@@ -85,9 +85,12 @@ const LessonPage = () => {
   }
 
   return (
-    <section>
+    <section className='studentLessonSection'>
       {content}
-      <button className='save-button' onClick={handleCalcResult}>
+      <button
+        className='save-button studentCalculateResultsButton'
+        onClick={handleCalcResult}
+      >
         Calculate Result
       </button>
     </section>

@@ -963,6 +963,42 @@ img.character {
   position: absolute;
 }
 
+/* STUDENT LESSON PAGE */
+
+.studentLessonSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.studentExerciseBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  padding: 2rem;
+}
+
+.studentExerciseBlockContent {
+  width: 100%;
+}
+
+.exercise-content-student {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #272f4b;
+}
+
+.studentSveAnswersButton {
+  width: 100%;
+}
+
+.studentCalculateResultsButton {
+  width: 50%;
+  margin: auto;
+}
+
 /* ANIMATION */
 
 .animation-test {
