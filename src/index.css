@@ -999,6 +999,38 @@ img.character {
   margin: auto;
 }
 
+/* DICTIONARY PAGE */
+
+.navCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.navCards a {
+  text-decoration: underline;
+}
+
+.dictionaryUpArrow {
+  position: fixed;
+  top: 82%;
+  left: 93%;
+  z-index: 100;
+}
+
+@media screen and (max-width: 1000px) {
+  .dictionaryUpArrow {
+    top: 90%;
+    left: 80%;
+    max-height: 1rem;
+  }
+}
+
 /* ANIMATION */
 
 .animation-test {

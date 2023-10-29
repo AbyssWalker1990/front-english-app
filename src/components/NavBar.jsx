@@ -80,7 +80,7 @@ const NavBar = () => {
               <Link to='/profile/map'>Карта</Link>
             </li>
             <li>
-              <Link to='/profile'>Словник</Link>
+              <Link to='profile/dictionary'>Словник</Link>
             </li>
             <li>
               <Link to='/profile/achievments'>Досягнення</Link>
