@@ -32,13 +32,10 @@ const AdventureMap = () => {
 
   if (isProfileSuccess) {
     const results = profileData.coursesAnswers[0].courseResults
-    // const successfullyPassedLessons = results.filter(
-    //   (result) => result.lessonResultPercent >= 80
-    // )
+    const successfullyPassedLessons = results.filter(
+      (result) => result.lessonResultPercent >= 80
+    )
 
-    const successfullyPassedLessons = [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-    ]
     const gender = profileData.gender ?? 'male'
 
     console.log(successfullyPassedLessons.length)
