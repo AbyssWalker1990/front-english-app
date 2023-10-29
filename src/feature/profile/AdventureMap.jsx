@@ -23,18 +23,28 @@ const AdventureMap = () => {
     [14, { top: '18%', left: '49%' }],
     [15, { top: '41%', left: '70%' }],
     [16, { top: '23%', left: '84%' }],
+    [17, { top: '23%', left: '84%' }],
+    [18, { top: '23%', left: '84%' }],
+    [19, { top: '23%', left: '84%' }],
   ])
 
   let content
 
   if (isProfileSuccess) {
     const results = profileData.coursesAnswers[0].courseResults
-    const successfullyPassedLessons = results.filter(
-      (result) => result.lessonResultPercent >= 80
-    )
+    // const successfullyPassedLessons = results.filter(
+    //   (result) => result.lessonResultPercent >= 80
+    // )
+
+    const successfullyPassedLessons = [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+    ]
     const gender = profileData.gender ?? 'male'
 
+    console.log(successfullyPassedLessons.length)
+
     let level
+    let mapImg
     switch (successfullyPassedLessons.length) {
       case 0:
       case 1:
@@ -64,8 +74,39 @@ const AdventureMap = () => {
         level = '5'
         break
       default:
-        level = '1'
+        level = '5'
         break
+    }
+
+    console.log('level:', level)
+    switch (level) {
+      case '1':
+        mapImg = 'map-0.jpg'
+        break
+      case '2':
+        mapImg = 'map-2.jpg'
+        break
+      case '3':
+        mapImg = 'map-3.jpg'
+        break
+      case '4':
+        mapImg = 'map-4.jpg'
+        break
+      case '5':
+        mapImg = 'map-5.jpg'
+        break
+      default:
+        mapImg = 'map-0.jpg'
+        break
+    }
+
+    if (
+      successfullyPassedLessons.length > 15 &&
+      successfullyPassedLessons.length < 17
+    ) {
+      mapImg = 'map-6.jpg'
+    } else if (successfullyPassedLessons.length >= 17) {
+      mapImg = 'map-7.jpg'
     }
 
     const characterURL = `../img/characters/${gender}_level${level}.png`
@@ -73,7 +114,7 @@ const AdventureMap = () => {
     content = (
       <section id='map-section'>
         <article id='map'>
-          <img src='../img/map_female.jpg' alt='map' />
+          <img src={`../img/map/${mapImg}`} alt='map' />
           <img
             src={characterURL}
             style={{
