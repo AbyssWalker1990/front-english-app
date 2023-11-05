@@ -67,16 +67,20 @@ const Achievments = () => {
     content = (
       <>
         <main className='profile-form'>
-          <div id='photo' className='padding-all'>
-            <div id='img-holder'>
+          <div id='photo' className='photoAchievments padding-all'>
+            <div id='img-holder' className='imgHolderAchievments'>
               <img
+                className='avatarAchievments'
                 src={profileData.photo}
                 id='img-from-local-storage'
                 alt='avatar'
               />
             </div>
           </div>
-          <div id='profile-desc' className='profile padding-all'>
+          <div
+            id='profile-desc'
+            className='profile profileAchievments padding-all'
+          >
             <h2>Курс: {currentCourseTitle}</h2>
             <br />
             <br />
@@ -130,7 +134,7 @@ const Achievments = () => {
     )
   }
 
-  return <section className='achievmetsSection'>{content}</section>
+  return <section className='achievmentsSection'>{content}</section>
 }
 
 export default Achievments

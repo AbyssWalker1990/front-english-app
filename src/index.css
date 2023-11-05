@@ -942,6 +942,85 @@ input[type='password']:focus {
   padding-left: 1rem;
 }
 
+@media screen and (max-width: 1000px) {
+  .achievmentsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .profile-form {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  #photo.photoAchievments {
+    width: 300px;
+    min-width: none;
+    height: auto;
+    max-height: auto;
+  }
+
+  #img-holder.imgHolderAchievments {
+    min-width: 300px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .avatarAchievments {
+    min-width: none;
+    width: 300px;
+    height: 300px;
+  }
+
+  #profile-desc.profileAchievments {
+    min-width: 300px;
+    padding-left: 4px;
+  }
+
+  #profile-desc.profileAchievments h2 {
+    font-size: 0.9rem;
+  }
+
+  #progress-bar-course {
+    width: 250px;
+  }
+
+  .wiseQuoteWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 221px;
+  }
+
+  .wiseQuote {
+    max-width: 300px;
+    width: 100%;
+    background: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wiseQuote img.owl-img {
+    height: 60%;
+  }
+
+  .wiseQuote img.feather-img {
+    display: none;
+  }
+
+  .wiseQuote p {
+    display: flex;
+    width: 300px;
+    padding-left: 0;
+    font-size: 0.7rem;
+  }
+}
+
 /* MAP PAGE */
 
 #map-section {
