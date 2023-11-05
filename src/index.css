@@ -947,6 +947,7 @@ input[type='password']:focus {
 #map-section {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 #map {
@@ -954,7 +955,7 @@ input[type='password']:focus {
   justify-content: center;
   align-items: center;
   width: 90%;
-  position: relative;
+  position: absolute;
 }
 
 img.character {
