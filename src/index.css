@@ -234,6 +234,31 @@ section#main-page {
   padding-inline: 1rem;
 }
 
+section#main-page-secondary {
+  gap: 3rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-inline: 1rem;
+  align-items: center;
+}
+
+section#main-page-secondary p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+section#main-page-secondary img {
+  display: flex;
+  margin-bottom: 1rem;
+  width: 85%;
+  height: 85%;
+  align-self: center;
+}
+
 article#big-logo {
   padding-left: 5rem;
   width: 49%;
