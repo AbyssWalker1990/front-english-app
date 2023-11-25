@@ -795,6 +795,10 @@ input[type='password']:focus {
   min-width: 285px;
 }
 
+.courseCard button {
+  background-color: var(--BGCOLOR);
+}
+
 .courseCard img:hover {
   cursor: pointer;
   scale: 1.05;
