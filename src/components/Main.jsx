@@ -1,7 +1,19 @@
 import { Link } from 'react-router-dom'
+import { useRef } from 'react'
 
 const Public = () => {
   const mode = process.env.REACT_APP_MODE
+  const freeLessonModal = useRef(null)
+
+  const handleOpenLessonModal = () => {
+    freeLessonModal.current.style.display = 'block'
+  }
+
+  const handleCloseLessonModal = (e) => {
+    e.preventDefault()
+    freeLessonModal.current.style.display = 'none'
+  }
+
   return (
     <main>
       <section id='main-page'>
@@ -11,9 +23,9 @@ const Public = () => {
         <article id='main-content'>
           <h1>Опануй Англійську і Стань Автором Свого Успішного Життя</h1>
           <div className='open-lesson-btn'>
-            <Link className='open-lesson-btn-link' to='/'>
+            <button className='open-lesson-btn' onClick={handleOpenLessonModal}>
               замовити пробний урок
-            </Link>
+            </button>
           </div>
           <br />
           <h2 className='align-flex-start'>Наші курси:</h2>
@@ -70,6 +82,26 @@ const Public = () => {
           *за умови виконання домашніх завдань
         </p>
         <img src='img/friendly_support.png' alt='support' />
+      </section>
+      <section ref={freeLessonModal} id='free-lesson-modal'>
+        <h2>Хочу на безкоштовний урок:</h2>
+        <form>
+          <div className='freeLessonFormControl'>
+            <label htmlFor='time'>Час і дата:</label>
+            <input
+              name='time'
+              type='text'
+              placeholder='Введіть зручний час і дату'
+            />
+          </div>
+          <div className='freeLessonFormControl'>
+            <label htmlFor='email'>Електронна пошта:</label>
+            <input name='email' type='text' placeholder='Ваш імейл' />
+          </div>
+          <button className='main-button' type='submit'>
+            Записатися
+          </button>
+        </form>
       </section>
     </main>
   )

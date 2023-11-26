@@ -226,6 +226,7 @@ section {
 }
 
 section#main-page {
+  position: relative;
   gap: 3rem;
   margin-top: 8rem;
   display: flex;
@@ -257,6 +258,59 @@ section#main-page-secondary img {
   width: 85%;
   height: 85%;
   align-self: center;
+}
+
+section#free-lesson-modal {
+  padding: 2rem;
+  display: none;
+  position: fixed;
+  border: 2px solid var(--FOOTER-COLOR);
+  top: 50%;
+  left: 50%;
+  height: auto;
+  width: auto;
+  transform: translate(-50%, -50%);
+  background-color: #d1ab85;
+  gap: 1rem;
+}
+
+section#free-lesson-modal form {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+section#free-lesson-modal input {
+  min-width: 20rem;
+}
+
+section#free-lesson-modal h1,
+h2,
+p,
+label {
+  color: var(--HEADER-COLOR);
+}
+
+@media screen and (max-width: 1000px) {
+  section#free-lesson-modal .freeLessonFormControl {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  section#free-lesson-modal label,
+  input {
+    display: flex;
+  }
+}
+
+.freeLessonFormControl {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.open-lesson-btn:hover {
+  cursor: pointer;
 }
 
 article#big-logo {
