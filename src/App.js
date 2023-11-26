@@ -31,6 +31,7 @@ import Standard from './components/Standard'
 import PurchaseFinal from './components/PurchaseFinal'
 import SuccessPaymentPage from './components/SuccessPaymentPage'
 import DictionaryPage from './feature/profile/DictionaryPage'
+import SuccessDiaryPage from './feature/profile/SuccessDiaryPage'
 
 function App() {
   return (
@@ -62,6 +63,10 @@ function App() {
               <Route path='profile/map' element={<AdventureMap />} />
               <Route path='profile/achievments' element={<Achievments />} />
               <Route path='profile/dictionary' element={<DictionaryPage />} />
+              <Route
+                path='profile/success-diary'
+                element={<SuccessDiaryPage />}
+              />
               <Route path='active-course' element={<ActiveCourseOverview />} />
               <Route
                 path='active-course/:courseId/:lessonPos'

@@ -44,6 +44,13 @@ export const profileApiSlice = apiSlice.injectEndpoints({
         body: { ...purchaseData },
       }),
     }),
+    addSuccessRecord: builder.mutation({
+      query: (successRecord) => ({
+        url: `/profile/success-diary`,
+        method: 'POST',
+        body: { ...successRecord },
+      }),
+    }),
   }),
 })
 
@@ -54,4 +61,5 @@ export const {
   useSetBlockAnswersMutation,
   useCalculateLessonResultMutation,
   useAddAndSetActiveCourseMutation,
+  useAddSuccessRecordMutation,
 } = profileApiSlice

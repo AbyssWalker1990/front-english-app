@@ -85,6 +85,9 @@ const NavBar = () => {
             <li>
               <Link to='/profile/achievments'>Досягнення</Link>
             </li>
+            <li>
+              <Link to='/profile/success-diary'>Щоденник успіху</Link>
+            </li>
           </>
         ) : (
           <>

@@ -1139,6 +1139,86 @@ img.character {
   }
 }
 
+/* SUCCESS DIARY PAGE */
+
+.successDiary {
+  display: flex;
+  flex-direction: row;
+}
+
+.successDiary h1 {
+  display: flex;
+  font-size: 1.8rem;
+}
+
+.successDiary h2 {
+  display: flex;
+  font-size: 1.1rem;
+}
+
+#diary-img {
+  display: flex;
+  width: 50%;
+  height: 500px;
+  justify-content: center;
+}
+
+#diary-img img {
+  width: auto;
+}
+
+#diary-main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 50%;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+#diary-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 1rem;
+}
+
+#success-area {
+  width: 100%;
+}
+
+#success-record {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-left: 1rem;
+  gap: 1rem;
+}
+
+.successDate {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) {
+  .successDiary {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #diary-img {
+    display: flex;
+    width: 90%;
+    height: auto;
+  }
+
+  #diary-main {
+    width: 100%;
+  }
+}
+
 /* ANIMATION */
 
 .animation-test {
