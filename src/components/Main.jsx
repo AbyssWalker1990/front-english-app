@@ -36,7 +36,7 @@ const Public = () => {
             уроках з персональним викладачем.
           </p>
           <img
-            src='img/teacher-student-learning-English.jpg'
+            src='img/teacher-student-learning-English_m.jpg'
             alt='teacher with student'
           />
           <p>

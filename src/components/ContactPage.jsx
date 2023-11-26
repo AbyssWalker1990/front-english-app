@@ -9,7 +9,7 @@ const ContactPage = () => {
           </div>
           <div className='socialItem'>
             <img src='img/icons/e-mail.png' alt='e-mail icon' />
-            <p>ews_support@gmail.com</p>
+            <p>ews.studentcare@gmail.com</p>
           </div>
           <div className='socialItem'>
             <img src='img/icons/instagram.png' alt='instagram icon' />
