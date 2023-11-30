@@ -552,6 +552,16 @@ nav a:focus {
   background-color: var(--BUTTON-COLOR);
 }
 
+.nav-button-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-button-mobile {
+    display: flex;
+  }
+}
+
 a.nav-button-link {
   color: white;
   font-size: 1.1rem;

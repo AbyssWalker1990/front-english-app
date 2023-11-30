@@ -128,22 +128,29 @@ const NavBar = () => {
   )
 
   return (
-    <header className='nav-header'>
-      <div className='logo'>
-        <Link to='/'>
-          <img src={`${imageBasePath}/logo-sm.png`} alt='logo' />
+    <>
+      <header className='nav-header'>
+        <div className='logo'>
+          <Link to='/'>
+            <img src={`${imageBasePath}/logo-sm.png`} alt='logo' />
+          </Link>
+        </div>
+
+        <nav className='hamburger'>{ulList}</nav>
+
+        <nav className='main'>{ulList}</nav>
+
+        {logSection}
+        <button className='menu-button'>
+          <div className='menu-icon'></div>
+        </button>
+      </header>
+      <div className='nav-button nav-button-mobile'>
+        <Link className='nav-button-link' to='/login'>
+          увійти
         </Link>
       </div>
-
-      <nav className='hamburger'>{ulList}</nav>
-
-      <nav className='main'>{ulList}</nav>
-
-      {logSection}
-      <button className='menu-button'>
-        <div className='menu-icon'></div>
-      </button>
-    </header>
+    </>
   )
 }
 export default NavBar
