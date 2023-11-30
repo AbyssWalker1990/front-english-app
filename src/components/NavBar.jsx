@@ -145,11 +145,14 @@ const NavBar = () => {
           <div className='menu-icon'></div>
         </button>
       </header>
-      <div className='nav-button nav-button-mobile'>
-        <Link className='nav-button-link' to='/login'>
-          увійти
-        </Link>
-      </div>
+
+      {!username ? (
+        <div className='nav-button nav-button-mobile'>
+          <Link className='nav-button-link' to='/login'>
+            увійти
+          </Link>
+        </div>
+      ) : null}
     </>
   )
 }
